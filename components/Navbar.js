@@ -5,7 +5,7 @@ import {
   Link,
   Image,
 } from "@chakra-ui/core";
-import ThemeTogglebutton from './ThemeTogglebutton';
+import ThemeToggleButton from './ThemeToggleButton';
 import { Link as NextLink } from 'next/link'
 
 function NavLink({ children, ...props }) {
@@ -37,7 +37,7 @@ export default function Navbar() {
     </Text>
       </Flex>
       <Box>
-        <ThemeTogglebutton />
+        <ThemeToggleButton />
         <NavLink ml={4} href="/">Home</NavLink>
       </Box>
     </Flex>

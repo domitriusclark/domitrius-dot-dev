@@ -8,7 +8,7 @@ import {
 import { FiSun, FiMoon } from 'react-icons/fi';
 
 
-export default function ThemeTogglebutton() {
+export default function ThemeToggleButton() {
   const { colorMode, toggleColorMode } = useColorMode();
 
   if (colorMode === "light") {
