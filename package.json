@@ -1,28 +1,65 @@
 {
-  "name": "domitrius-dot-dev",
-  "version": "0.1.0",
-  "private": true,
+  "name": "mdnext",
+  "description": "This example shows using [MDX](https://github.com/mdx-js/mdx) content inside your NextJS app w/ Frontmatter & layouts thanks to next-mdx-enhanced.",
+  "version": "1.0.1",
+  "repository": "https://github.com/domitriusclark/mdnext.git",
+  "author": "domitriusclark",
+  "main": "next.config.js",
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
-    "deploy": "npm run build && npm run export",
+    "dev": "next",
     "start": "next start",
-    "export": "next export"
+    "format": "yarn format:index && yarn format:pages && yarn format:src",
+    "format:index": "prettier --write \"*.{js,json,md}\"",
+    "format:pages": "prettier --write \"pages/**/*.js\"",
+    "format:src": "prettier --write \"src/**/*.{js,md,mdx}\""
   },
   "dependencies": {
-    "@chakra-ui/core": "^1.0.0-next.4",
-    "@chakra-ui/theme": "^1.0.0-next.4",
-    "@mdx-js/loader": "^1.5.1",
-    "@mdx-js/react": "^1.6.6",
-    "@next/mdx": "^9.1.1",
-    "babel-plugin-import-glob-array": "^0.2.0",
+    "@chakra-ui/core": "^1.0.0-rc.2",
+    "@chakra-ui/theme": "^1.0.0-rc.2",
+    "fast-glob": "^3.2.4",
     "fuse.js": "^6.4.1",
-    "next": "latest",
-    "next-mdx-enhanced": "^3.0.0",
+    "gray-matter": "^4.0.2",
+    "js-cookie": "^2.2.1",
+    "next": "^9.5.2",
+    "next-cookies": "^2.0.3",
+    "next-mdx-remote": "^0.6.0",
+    "next-seo": "^4.7.3",
     "prism-react-renderer": "^1.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-icons": "^3.10.0",
-    "use-cloudinary": "^3.1.4"
-  }
+    "use-cloudinary": "^3.1.6"
+  },
+  "devDependencies": {
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
+    "prettier": "^2.0.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,md}": [
+      "prettier --write"
+    ],
+    "pages/**/*.js": [
+      "prettier --write"
+    ],
+    "src/**/*.{js,md,mdx}": [
+      "prettier --write"
+    ]
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "keywords": [
+    "nextjs",
+    "mdx"
+  ],
+  "license": "ISC"
 }

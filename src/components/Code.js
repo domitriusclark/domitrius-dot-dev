@@ -1,9 +1,9 @@
-import Highlight, { defaultProps } from "prism-react-renderer";
-import theme from "prism-react-renderer/themes/vsDark";
-import CopyButton from '../components/CopyButton.js';
+import Highlight, { defaultProps } from 'prism-react-renderer';
+import theme from 'prism-react-renderer/themes/vsDark';
+import CopyButton from '@components/CopyButton.js';
 
 export default function Code({ children, className }) {
-  const language = className.replace(/language-/, "");
+  const language = className.replace(/language-/, '');
   return (
     <Highlight
       {...defaultProps}
@@ -16,10 +16,10 @@ export default function Code({ children, className }) {
           className={className}
           style={{
             ...style,
-            overflow: "scroll",
+            overflow: 'scroll',
             marginTop: 20,
             marginBottom: 20,
-            padding: 16
+            padding: 16,
           }}
         >
           {tokens.map((line, i) => (
@@ -31,9 +31,7 @@ export default function Code({ children, className }) {
           ))}
           <CopyButton value={children.trim()} />
         </pre>
-
       )}
-
     </Highlight>
   );
 }
