@@ -27,7 +27,7 @@ export default function Index({ cookies }) {
           </Text>
           <Text mt={8}>
             My name is Domitrius. I'm an Advocate Engineer at Cloudinary. I
-            stream on Twitch. I make educational content on Egghead. All my
+            stream on Twitch. I make educational content on egghead. All my
             other time is consumed by video games
           </Text>
         </Flex>
