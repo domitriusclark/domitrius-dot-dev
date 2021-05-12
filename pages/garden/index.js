@@ -9,10 +9,10 @@ import Search from '@components/Search';
 import { Chakra } from '@components/Chakra';
 
 export default function SearchPage({ allMdx }) {
-  const [filteredBlogs, setFilteredBlogs] = React.useState(allMdx);
+  const [filteredSeeds, setFilteredSeeds] = React.useState(allMdx);
 
   const handleFilter = (data) => {
-    setFilteredBlogs(data);
+    setFilteredSeeds(data);
   };
 
   return (
@@ -20,11 +20,11 @@ export default function SearchPage({ allMdx }) {
       <Flex>
         {/* Content Area + Input + Tag filter */}
         <Flex direction="column" justify="center" alignItems="center" w="100%">
-          <Search blogs={allMdx} handleFilter={handleFilter} />
+          <Search seeds={allMdx} handleFilter={handleFilter} />
           <Flex direction="column" justify="space-evenly" h="80vh">
-            {filteredBlogs &&
-              filteredBlogs.map((blog) => (
-                <ContentBox key={blog.slug} blog={blog} />
+            {filteredSeeds &&
+              filteredSeeds.map((seed) => (
+                <ContentBox key={seed.slug} seed={seed} />
               ))}
           </Flex>
         </Flex>
@@ -34,7 +34,7 @@ export default function SearchPage({ allMdx }) {
 }
 
 export function getStaticProps() {
-  const files = glob.sync('src/blogs/*.mdx');
+  const files = glob.sync('src/seeds/*.mdx');
 
   const allMdx = files.map((file) => {
     const split = file.split('/');

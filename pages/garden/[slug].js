@@ -12,6 +12,11 @@ const components = { code: Code };
 export default function BlogPost({ mdxSource, frontMatter }) {
   const content = hydrate(mdxSource, components);
 
+  console.log({
+    frontMatter,
+    content,
+  });
+
   return (
     <Chakra evaluateThemeLazily>
       <div>
@@ -23,7 +28,7 @@ export default function BlogPost({ mdxSource, frontMatter }) {
 }
 
 // This glob is what will be used to generate static routes
-const contentGlob = 'src/blogs/*.mdx';
+const contentGlob = 'src/seeds/*.mdx';
 
 export async function getStaticPaths() {
   const files = glob.sync(contentGlob);

@@ -16,14 +16,14 @@ const fuseOptions = {
   keys: ['title', 'tags'],
 };
 
-export default function Search({ blogs, handleFilter }) {
+export default function Search({ seeds, handleFilter }) {
   const [searchValue, setSearchValue] = useState('');
   const [searchTags, setSearchTags] = useState([]);
-  const fuse = new Fuse(blogs, fuseOptions);
+  const fuse = new Fuse(seeds, fuseOptions);
 
   React.useEffect(() => {
     if (searchValue === '' && searchTags.length === 0) {
-      handleFilter(blogs);
+      handleFilter(seeds);
     } else {
       // Allow for a search for tag
       const formattedTags = [...searchTags.map((item) => ({ tags: item }))];
