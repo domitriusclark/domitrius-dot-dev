@@ -1,13 +1,21 @@
-import React from 'react';
-
 import Navbar from '@components/Navbar';
-import { Box } from '@chakra-ui/react';
+import SEO from '@components/SEO';
+import AssetDrawer from '@components/AssetDrawer';
+import { useDisclosure } from '@chakra-ui/react';
 
-export default function Layout({ children, bg }) {
+export default function Layout({
+  title,
+  description,
+  twitter,
+  openGraph,
+  children,
+}) {
+  const { onOpen, onClose, isOpen } = useDisclosure();
   return (
-    <Box minW="100%" minH="100%" backgroundColor={bg}>
-      <Navbar />
+    <>
+      <AssetDrawer onClose={onClose} isOpen={isOpen} />
+      <Navbar onOpen={onOpen} />
       {children}
-    </Box>
+    </>
   );
 }

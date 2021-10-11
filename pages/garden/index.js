@@ -1,58 +1,39 @@
-import { Flex } from '@chakra-ui/core';
-
-import glob from 'fast-glob';
-import fs from 'fs';
-import matter from 'gray-matter';
-
+import { Box, Stack } from '@chakra-ui/react';
+import React from 'react';
 import ContentBox from '@components/ContentBox';
 import Search from '@components/Search';
-import { Chakra } from '@components/Chakra';
+import supabase from '@utils/initSupabase';
 
-export default function SearchPage({ allMdx }) {
-  const [filteredSeeds, setFilteredSeeds] = React.useState(allMdx);
+export default function BlogPage({ posts }) {
+  const [filteredPosts, setFilteredPosts] = React.useState(posts);
+
+  console.log(filteredPosts);
 
   const handleFilter = (data) => {
-    setFilteredSeeds(data);
+    setFilteredPosts(data);
   };
 
   return (
-    <Chakra evaluateThemeLazily>
-      <Flex>
-        {/* Content Area + Input + Tag filter */}
-        <Flex direction="column" justify="center" alignItems="center" w="100%">
-          <Search seeds={allMdx} handleFilter={handleFilter} />
-          <Flex direction="column" justify="space-evenly" h="80vh">
-            {filteredSeeds &&
-              filteredSeeds.map((seed) => (
-                <ContentBox key={seed.slug} seed={seed} />
-              ))}
-          </Flex>
-        </Flex>
-      </Flex>
-    </Chakra>
+    <Box pb={3}>
+      {/* Content Area + Input + Tag filter */}
+      <Stack spacing={[4, 8, 12]} justify="center" alignItems="center">
+        <Search posts={posts} handleFilter={handleFilter} />
+        <Stack spacing={[2, 6, 12]}>
+          {filteredPosts?.map((post) => (
+            <ContentBox key={post.slug} post={post} />
+          ))}
+        </Stack>
+      </Stack>
+    </Box>
   );
 }
 
-export function getStaticProps() {
-  const files = glob.sync('src/seeds/*.mdx');
-
-  const allMdx = files.map((file) => {
-    const split = file.split('/');
-    const filename = split[split.length - 1];
-    const slug = filename.replace('.mdx', '');
-
-    const mdxSource = fs.readFileSync(file);
-    const { data } = matter(mdxSource);
-
-    return {
-      slug,
-      ...data,
-    };
-  });
+export async function getStaticProps() {
+  const { data } = await supabase.from('Posts').select();
 
   return {
     props: {
-      allMdx,
+      posts: data,
     },
   };
 }

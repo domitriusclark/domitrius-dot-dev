@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Fuse from 'fuse.js';
 
-import { Flex, Button, Stack, Input } from '@chakra-ui/core';
+import { Flex, Stack, Input } from '@chakra-ui/react';
 
-const TAG_LIST = ['react', 'nextjs', 'chakra ui'];
+import TagList from './TagList';
 
 const fuseOptions = {
   threshold: 0.35,
@@ -16,14 +16,15 @@ const fuseOptions = {
   keys: ['title', 'tags'],
 };
 
-export default function Search({ seeds, handleFilter }) {
-  const [searchValue, setSearchValue] = useState('');
-  const [searchTags, setSearchTags] = useState([]);
-  const fuse = new Fuse(seeds, fuseOptions);
+export default function Search({ posts, handleFilter }) {
+  const [searchValue, setSearchValue] = React.useState('');
+  const [searchTags, setSearchTags] = React.useState([]);
+  const fuse = new Fuse(posts, fuseOptions);
+  const tags = [...new Set(posts.flatMap(({ tags }) => tags))];
 
   React.useEffect(() => {
     if (searchValue === '' && searchTags.length === 0) {
-      handleFilter(seeds);
+      handleFilter(posts);
     } else {
       // Allow for a search for tag
       const formattedTags = [...searchTags.map((item) => ({ tags: item }))];
@@ -56,17 +57,16 @@ export default function Search({ seeds, handleFilter }) {
   };
 
   return (
-    <Flex direction="column" w={['100%', '75%', '50%']}>
+    <Stack
+      direction="column"
+      w={['100%', '75%', '50%']}
+      align="center"
+      spacing={[6, 8, 10]}
+    >
       <Flex justify="space-around">
-        <Stack spacing={4}>
-          {TAG_LIST.map((tag, index) => (
-            <Button onClick={() => onTagClick(tag)} key={index}>
-              #{tag}
-            </Button>
-          ))}
-        </Stack>
+        <TagList tags={tags} value={searchTags} onChange={setSearchTags} />
       </Flex>
-      <Input mt={6} value={searchValue} onChange={onChange} />
-    </Flex>
+      <Input value={searchValue} onChange={onChange} />
+    </Stack>
   );
 }
