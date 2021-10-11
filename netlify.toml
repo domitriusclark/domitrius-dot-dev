@@ -1,0 +1,13 @@
+[context.production.environment]
+  NEXT_PUBLIC_SUPABASE_URL = "https://rvjzdxpsctyjwopbpypt.supabase.co"
+  NEXT_PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic2VydmljZV9yb2xlIiwiaWF0IjoxNjI4NjE4NjYwLCJleHAiOjE5NDQxOTQ2NjB9.psQK3POiSZeJryERqJNRhaAOhH3vARbRqXcA0fd3dtw"
+  CLOUDINARY_CLOUD_NAME = "mdnextjs"
+  CLOUDINARY_API_KEY = "837667431986283"
+  CLOUDINARY_API_SECRET = "aS_VNMU6ejFgJ2sWY2uAESkzqec"
+  
+[context.deploy-preview.environment]
+  NEXT_PUBLIC_SUPABASE_URL = "https://rvjzdxpsctyjwopbpypt.supabase.co"
+  NEXT_PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic2VydmljZV9yb2xlIiwiaWF0IjoxNjI4NjE4NjYwLCJleHAiOjE5NDQxOTQ2NjB9.psQK3POiSZeJryERqJNRhaAOhH3vARbRqXcA0fd3dtw"
+  CLOUDINARY_CLOUD_NAME = "mdnextjs"
+  CLOUDINARY_API_KEY = "837667431986283"
+  CLOUDINARY_API_SECRET = "aS_VNMU6ejFgJ2sWY2uAESkzqec"

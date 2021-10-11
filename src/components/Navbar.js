@@ -1,35 +1,37 @@
-import { Flex, Text, Box, Link } from '@chakra-ui/core';
+import { Flex, Text, Box, Button } from '@chakra-ui/react';
 import ThemeTogglebutton from '@components/ThemeToggleButton';
-import { Link as NextLink } from 'next/link';
+import Link from '@components/Link';
 
-function NavLink({ children, ...props }) {
-  return (
-    <Link as={NextLink} px={2} {...props}>
-      {children}
-    </Link>
-  );
-}
-
-export default function Navbar() {
+export default function Navbar({ onOpen }) {
   return (
     <Flex
       w="100%"
-      px={5}
+      px={8}
       py={4}
       justifyContent="space-between"
       alignItems="center"
     >
       <Flex flexDirection="row" justifyContent="center" alignItems="center">
-        <Text pl={3}>Domitrius Clark</Text>
+        <Text pl={3}>MDNEXT</Text>
       </Flex>
       <Box>
         <ThemeTogglebutton />
-        <NavLink ml={4} href="/">
+        <Link m={4} href="/">
           Home
-        </NavLink>
-        <NavLink ml={4} href="/garden">
-          Garden
-        </NavLink>
+        </Link>
+        <Link m={4} href="/garden">
+          Blog
+        </Link>
+        {process.env.NODE_ENV === 'development' && (
+          <>
+            <Link px={2} href="/garden/author">
+              Write
+            </Link>
+            <Button size="sm" ml={3} onClick={onOpen}>
+              Assets
+            </Button>
+          </>
+        )}
       </Box>
     </Flex>
   );

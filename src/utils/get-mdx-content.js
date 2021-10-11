@@ -1,12 +1,12 @@
 import { promises as fs } from 'fs';
 import path from 'path';
-import renderToString from 'next-mdx-remote/render-to-string';
+import { serialize } from 'next-mdx-remote/serialize';
 import matter from 'gray-matter';
 import glob from 'fast-glob';
 
-import components from '@components/MDXComponents';
+import components from '@components/MdxComponents';
 
-export async function getMdxContent(source) {
+export async function getLocalMdx(source) {
   const contentGlob = `${source}/**/*.mdx`;
   const files = glob.sync(contentGlob);
 
@@ -21,7 +21,7 @@ export async function getMdxContent(source) {
 
       const mdxSource = await fs.readFile(filepath);
       const { content, data } = matter(mdxSource);
-      const mdx = await renderToString(content, { components, scope: data });
+      const mdx = await serialize(content, { components, scope: data });
 
       return {
         filepath,
