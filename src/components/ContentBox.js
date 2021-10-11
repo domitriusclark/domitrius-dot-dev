@@ -54,12 +54,14 @@ export default function ContentBox({ post }) {
           ))}
         </Stack>
       </Stack>
-      <Flex>
-        <IconButton icon={<FaTrash />} onClick={() => deletePost(id)} />
-        <NextLink href={`/garden/author/${id}`} passHref>
-          <IconButton as={Link} icon={<FaEdit />} />
-        </NextLink>
-      </Flex>
+      {process.env.NODE_ENV === 'development' && (
+        <Flex>
+          <IconButton icon={<FaTrash />} onClick={() => deletePost(id)} />
+          <NextLink href={`/garden/author/${id}`} passHref>
+            <IconButton as={Link} icon={<FaEdit />} />
+          </NextLink>
+        </Flex>
+      )}
     </Flex>
   );
 }
