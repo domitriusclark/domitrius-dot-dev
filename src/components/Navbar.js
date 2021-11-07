@@ -10,6 +10,8 @@ export default function Navbar({ onOpen }) {
       py={4}
       justifyContent="space-between"
       alignItems="center"
+      bg="gray.800"
+      color="#ECF1F2"
     >
       <Flex flexDirection="row" justifyContent="center" alignItems="center">
         <Text pl={3}>MDNEXT</Text>

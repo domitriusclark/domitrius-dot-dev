@@ -5,7 +5,15 @@ import supabase from '@utils/initSupabase';
 
 export default function AuthorPost({ post }) {
   return (
-    <Flex w="100%" h="100%" p={10}>
+    <Flex
+      as="form"
+      w="100%"
+      h="100%"
+      p={10}
+      onSubmit={(e) => {
+        e.preventDefault();
+      }}
+    >
       {post ? <BlogForm post={post} /> : <BlogForm />}
     </Flex>
   );
