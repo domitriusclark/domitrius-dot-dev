@@ -8,6 +8,11 @@ import {
   FormControl,
   FormLabel,
   Select,
+  Tabs,
+  Tab,
+  TabList,
+  TabPanels,
+  TabPanel,
 } from '@chakra-ui/react';
 
 import Editor from '@components/Editor';
@@ -51,10 +56,32 @@ function EditorArea({ post }) {
       : [{ type: 'paragraph', children: [{ text: '', marks: '' }] }],
   );
   return (
-    <Flex mt={3} p={7} minW="100%" bg="gray.100" rounded="md">
-      <Box minH="100%" bg="white" w="100%" p={3}>
-        <Editor value={body} setValue={setBody} />
-      </Box>
+    <Flex
+      direction="column"
+      mt={3}
+      p={7}
+      minW="100%"
+      flexGrow="1"
+      bg="gray.100"
+      boxShadow="xl"
+      rounded="md"
+    >
+      <Tabs h="100%" variant="enclosed">
+        <TabList>
+          <Tab>Write</Tab>
+          <Tab>Preview</Tab>
+        </TabList>
+        <TabPanels h="100%">
+          <TabPanel as={Flex} justify="center" align="center" h="100%" p={0}>
+            <Box minH="90%" bg="white" w="100%" p={3}>
+              <Editor value={body} setValue={setBody} />
+            </Box>
+          </TabPanel>
+          <TabPanel>
+            <p>Preview (Coming soon!)</p>
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
     </Flex>
   );
 }
