@@ -1,7 +1,8 @@
+import * as React from 'react';
 import Navbar from '@components/Navbar';
 import SEO from '@components/SEO';
-import AssetDrawer from '@components/AssetDrawer';
-import { Box, Flex, useDisclosure } from '@chakra-ui/react';
+import AssetDrawer, { AssetDrawerProvider } from '@components/AssetDrawer';
+import { Box, Flex } from '@chakra-ui/react';
 
 export default function Layout({
   title,
@@ -10,14 +11,13 @@ export default function Layout({
   openGraph,
   children,
 }) {
-  const { onOpen, onClose, isOpen } = useDisclosure();
   return (
-    <>
-      <AssetDrawer onClose={onClose} isOpen={isOpen} />
+    <AssetDrawerProvider>
+      <AssetDrawer />
       <Flex h="100vh" direction="column">
-        <Navbar onOpen={onOpen} />
+        <Navbar />
         <Box flex="1">{children}</Box>
       </Flex>
-    </>
+    </AssetDrawerProvider>
   );
 }

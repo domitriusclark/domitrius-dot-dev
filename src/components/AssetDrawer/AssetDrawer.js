@@ -11,6 +11,7 @@ import {
   DrawerFooter,
   Flex,
   Heading,
+  useDisclosure,
 } from '@chakra-ui/react';
 
 import { FaHome, FaArrowAltCircleLeft } from 'react-icons/fa';
@@ -68,7 +69,19 @@ function reducer(state, action) {
   }
 }
 
-export default function AssetDrawer({ onClose, isOpen }) {
+export const AssetDrawerContext = React.createContext();
+
+export const AssetDrawerProvider = ({ children }) => {
+  const { onOpen, onClose, isOpen } = useDisclosure();
+  return (
+    <AssetDrawerContext.Provider value={{ onOpen, onClose, isOpen }}>
+      {children}
+    </AssetDrawerContext.Provider>
+  );
+};
+
+export default function AssetDrawer() {
+  const { isOpen, onClose } = React.useContext(AssetDrawerContext);
   const [state, dispatch] = React.useReducer(reducer, initState);
 
   const prevState = usePrevious(state);

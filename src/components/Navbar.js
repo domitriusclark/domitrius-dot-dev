@@ -1,8 +1,11 @@
+import * as React from 'react';
 import { Flex, Text, Box, Button } from '@chakra-ui/react';
 import ThemeTogglebutton from '@components/ThemeToggleButton';
 import Link from '@components/Link';
+import { AssetDrawerContext } from '@components/AssetDrawer';
 
-export default function Navbar({ onOpen }) {
+export default function Navbar() {
+  const { onOpen } = React.useContext(AssetDrawerContext);
   return (
     <Flex
       w="100%"
@@ -14,7 +17,7 @@ export default function Navbar({ onOpen }) {
       color="#ECF1F2"
     >
       <Flex flexDirection="row" justifyContent="center" alignItems="center">
-        <Text pl={3}>Domitrius Clark</Text>
+        <Text pl={3}>Domitrius Clark </Text>
       </Flex>
       <Box>
         <ThemeTogglebutton />
