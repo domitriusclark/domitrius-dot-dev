@@ -1,4 +1,5 @@
 import { Flex, Text } from '@chakra-ui/react';
+import Link from '@components/Link';
 
 export default function Index() {
   return (
@@ -8,9 +9,11 @@ export default function Index() {
           Welcome 👋
         </Text>
         <Text mt={8}>
-          My name is Domitrius. I'm an Advocate Engineer at Cloudinary. I stream
-          on Twitch. I make educational content on Egghead. All my other time is
-          consumed by video games
+          My name is Domitrius | Jamstack Comunity Engineer{' '}
+          <Link _hover={{ color: '#00AD9F' }} href="wwww.netlify.com">
+            @Netlify
+          </Link>
+          <br />
         </Text>
       </Flex>
     </Flex>

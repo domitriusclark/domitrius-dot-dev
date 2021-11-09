@@ -14,7 +14,7 @@ export default function Navbar({ onOpen }) {
       color="#ECF1F2"
     >
       <Flex flexDirection="row" justifyContent="center" alignItems="center">
-        <Text pl={3}>MDNEXT</Text>
+        <Text pl={3}>Domitrius Clark</Text>
       </Flex>
       <Box>
         <ThemeTogglebutton />
