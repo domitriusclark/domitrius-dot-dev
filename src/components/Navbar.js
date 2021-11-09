@@ -26,10 +26,10 @@ export default function Navbar({ onOpen }) {
         </Link>
         {process.env.NODE_ENV === 'development' && (
           <>
-            <Link px={2} href="/garden/author">
+            <Link px={2} href="/garden/write">
               Write
             </Link>
-            <Button size="sm" ml={3} onClick={onOpen}>
+            <Button color="gray.800" size="sm" ml={3} onClick={onOpen}>
               Assets
             </Button>
           </>

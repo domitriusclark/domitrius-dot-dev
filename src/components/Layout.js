@@ -1,7 +1,7 @@
 import Navbar from '@components/Navbar';
 import SEO from '@components/SEO';
 import AssetDrawer from '@components/AssetDrawer';
-import { useDisclosure } from '@chakra-ui/react';
+import { Box, Flex, useDisclosure } from '@chakra-ui/react';
 
 export default function Layout({
   title,
@@ -14,8 +14,10 @@ export default function Layout({
   return (
     <>
       <AssetDrawer onClose={onClose} isOpen={isOpen} />
-      <Navbar onOpen={onOpen} />
-      {children}
+      <Flex h="100vh" direction="column">
+        <Navbar onOpen={onOpen} />
+        <Box flex="1">{children}</Box>
+      </Flex>
     </>
   );
 }
