@@ -9,7 +9,7 @@ export default function Index() {
           Welcome 👋
         </Text>
         <Text mt={8}>
-          My name is Domitrius | Jamstack Comunity Engineer{' '}
+          Domitrius Clark | Jamstack Comunity Engineer{' '}
           <Link _hover={{ color: '#00AD9F' }} href="wwww.netlify.com">
             @Netlify
           </Link>

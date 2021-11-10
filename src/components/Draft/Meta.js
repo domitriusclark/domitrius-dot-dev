@@ -101,12 +101,12 @@ export default function Meta({ post }) {
           color="white"
           onClick={() => publishDraft()}
         >
-          Publish
+          {post && post.published ? 'Unpublish' : 'Publish'}
         </Button>
       </HStack>
       <FormControl>
         <FormLabel>Date</FormLabel>
-        <Input type="date" />
+        <Input onChange={() => setDate(e.target.value)} type="date" />
       </FormControl>
       <FormControl>
         <FormLabel>Tags</FormLabel>
