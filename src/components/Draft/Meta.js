@@ -9,14 +9,22 @@ import {
   Input,
   Text,
   Textarea,
+  Icon,
 } from '@chakra-ui/react';
+import { FaCircle } from 'react-icons/fa';
 import { AssetDrawerContext } from '@components/AssetDrawer';
+
+const Circle = ({ color }) => <Icon as={FaCircle} color={color} size="sm" />;
 
 export default function Meta({ post }) {
   const { onOpen } = React.useContext(AssetDrawerContext);
 
   const [tag, setTag] = React.useState('');
   const [tagGroup, setTagGroup] = React.useState(post ? post.tags : []);
+  const [contentType, setContentType] = React.useState('Garden');
+  const [published, setPublished] = React.useState(
+    post ? post.published : false,
+  );
 
   const [description, setDescription] = React.useState(
     post ? post.description : '',
@@ -50,6 +58,21 @@ export default function Meta({ post }) {
     });
   }
 
+  async function publishDraft() {
+    if (!post.title && !post.body && !description) {
+      return;
+    }
+    await fetch('/api/post/publish', {
+      method: 'PUT',
+      body: JSON.stringify({
+        id: post.id,
+        published: !published,
+      }),
+    });
+
+    setPublished((prev) => !prev);
+  }
+
   return (
     <Flex
       direction="column"
@@ -64,7 +87,20 @@ export default function Meta({ post }) {
         <Button bg="gray.500" color="white" type="submit">
           Save
         </Button>
-        <Button flex="1" bg="gray.500" color="white" onSubmit={() => {}}>
+
+        <Button
+          rightIcon={
+            post && post.published ? (
+              <Circle color="green.300" />
+            ) : (
+              <Circle color="red.300" />
+            )
+          }
+          flex="1"
+          bg="gray.500"
+          color="white"
+          onClick={() => publishDraft()}
+        >
           Publish
         </Button>
       </HStack>
@@ -88,7 +124,7 @@ export default function Meta({ post }) {
       </FormControl>
       <FormControl h="100%">
         <FormLabel>Description</FormLabel>
-        <Textarea onClick={(e) => setDescriptin(e.target.value)} size="2xl" />
+        <Textarea onClick={(e) => setDescription(e.target.value)} size="2xl" />
       </FormControl>
     </Flex>
   );
