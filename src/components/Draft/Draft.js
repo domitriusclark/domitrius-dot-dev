@@ -1,8 +1,10 @@
+import { FormProvider, useForm } from 'react-hook-form';
 import { Flex } from '@chakra-ui/react';
 import Main from './Main';
 import Meta from './Meta';
 
 export default function Draft({ post }) {
+  const methods = useForm();
   async function createPost() {
     if (
       !title ||
@@ -29,17 +31,17 @@ export default function Draft({ post }) {
   }
 
   return (
-    <Flex
-      as="form"
-      w="100%"
-      minH="100%"
-      p={10}
-      onSubmit={(e) => {
-        e.preventDefault();
-      }}
-    >
-      <Main post={post} />
-      <Meta />
-    </Flex>
+    <FormProvider {...methods}>
+      <Flex
+        as="form"
+        w="100%"
+        minH="100%"
+        p={10}
+        onSubmit={methods.handleSubmit(createPost())}
+      >
+        <Main post={post} />
+        <Meta />
+      </Flex>
+    </FormProvider>
   );
 }

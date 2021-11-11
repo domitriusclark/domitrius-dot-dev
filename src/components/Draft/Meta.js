@@ -17,6 +17,15 @@ import { AssetDrawerContext } from '@components/AssetDrawer';
 const Circle = ({ color }) => <Icon as={FaCircle} color={color} size="sm" />;
 
 export default function Meta({ post }) {
+  const dateInputRef = React.useRef();
+
+  React.useEffect(() => {
+    const today = new Date();
+    const date = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`;
+
+    dateInputRef.current.value = date;
+  });
+
   const { onOpen } = React.useContext(AssetDrawerContext);
 
   const [tag, setTag] = React.useState('');
@@ -106,7 +115,12 @@ export default function Meta({ post }) {
       </HStack>
       <FormControl>
         <FormLabel>Date</FormLabel>
-        <Input onChange={() => setDate(e.target.value)} type="date" />
+        <Input
+          ref={dateInputRef}
+          disabled
+          onChange={() => setDate(e.target.value)}
+          type="date"
+        />
       </FormControl>
       <FormControl>
         <FormLabel>Tags</FormLabel>
