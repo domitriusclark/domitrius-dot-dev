@@ -13,10 +13,12 @@ import {
 } from '@chakra-ui/react';
 import { FaCircle } from 'react-icons/fa';
 import { AssetDrawerContext } from '@components/AssetDrawer';
+import { useFormContext } from 'react-hook-form';
 
 const Circle = ({ color }) => <Icon as={FaCircle} color={color} size="sm" />;
 
 export default function Meta({ post }) {
+  const { register } = useFormContext();
   const { onOpen } = React.useContext(AssetDrawerContext);
   const [tagGroup, setTagGroup] = React.useState(post ? post.tags : []);
   const [published, setPublished] = React.useState(
@@ -74,7 +76,7 @@ export default function Meta({ post }) {
       ml={8}
     >
       <HStack w="100%">
-        <Button bg="gray.500" color="white" type="submit">
+        <Button bg="green.500" color="white" type="submit">
           Save
         </Button>
 
@@ -96,11 +98,11 @@ export default function Meta({ post }) {
       </HStack>
       <FormControl>
         <FormLabel>Date</FormLabel>
-        <Input disabled type="date" {...register('date')} />
+        <Input bg="white" disabled type="date" {...register('date')} />
       </FormControl>
       <FormControl>
         <FormLabel>Tags</FormLabel>
-        <Input type="text" {...register('tag')} />
+        <Input bg="white" type="text" {...register('tag')} />
       </FormControl>
       <FormControl>
         <FormLabel>Banner</FormLabel>
@@ -109,12 +111,12 @@ export default function Meta({ post }) {
             Media Library
           </Button>
           <Text size="lg">OR</Text>
-          <Input placeholder="URL"></Input>
+          <Input bg="white" placeholder="URL" {...register('coverImage')} />
         </VStack>
       </FormControl>
       <FormControl h="100%">
         <FormLabel>Description</FormLabel>
-        <Textarea onClick={(e) => setDescription(e.target.value)} size="2xl" />
+        <Textarea bg="white" size="2xl" {...register('description')} />
       </FormControl>
     </Flex>
   );

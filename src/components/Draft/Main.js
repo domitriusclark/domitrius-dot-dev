@@ -36,7 +36,11 @@ function InputGroup() {
       </FormControl>
       <FormControl>
         <FormLabel>Content-Type</FormLabel>
-        <Select placeholder="Select option" {...register('contentType')}>
+        <Select
+          bg="white"
+          placeholder="Select option"
+          {...register('contentType')}
+        >
           <option value="Garden">Garden</option>
           <option value="Daily">Daily</option>
         </Select>
@@ -62,7 +66,7 @@ function EditorArea({ post }) {
       boxShadow="xl"
       rounded="md"
     >
-      <Tabs h="100%" variant="enclosed">
+      <Tabs color="black" h="100%" variant="enclosed">
         <TabList>
           <Tab>Write</Tab>
           <Tab>Preview</Tab>

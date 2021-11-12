@@ -16,7 +16,9 @@ export default function Layout({
       <AssetDrawer />
       <Flex h="100vh" direction="column">
         <Navbar />
-        <Box flex="1">{children}</Box>
+        <Box color="gray.100" bg="gray.600" flex="1">
+          {children}
+        </Box>
       </Flex>
     </AssetDrawerProvider>
   );
