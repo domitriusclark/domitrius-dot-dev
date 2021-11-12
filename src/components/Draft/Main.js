@@ -18,12 +18,9 @@ import {
 
 import Editor from '@components/Editor';
 
-function InputGroup({ post }) {
-  // const [title, setTitle] = React.useState(post ? post.title : '');
-  const { register, watch } = useFormContext();
+function InputGroup() {
+  const { register } = useFormContext();
 
-  console.log(watch());
-  const [contentType, setContentType] = React.useState('Garden');
   return (
     <HStack>
       <FormControl>
@@ -39,11 +36,7 @@ function InputGroup({ post }) {
       </FormControl>
       <FormControl>
         <FormLabel>Content-Type</FormLabel>
-        <Select
-          value={contentType}
-          onChange={(e) => setContentType(e.target.value)}
-          placeholder="Select option"
-        >
+        <Select placeholder="Select option" {...register('contentType')}>
           <option value="Garden">Garden</option>
           <option value="Daily">Daily</option>
         </Select>

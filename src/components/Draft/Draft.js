@@ -3,8 +3,23 @@ import { Flex } from '@chakra-ui/react';
 import Main from './Main';
 import Meta from './Meta';
 
+const date = new Date();
+const today = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+
 export default function Draft({ post }) {
-  const methods = useForm();
+  const defaultValues = {
+    title: post ? post.title : '',
+    contentType: post ? post.contentType : 'Garden',
+    date: today,
+    tag: '',
+    description: post ? post.description : '',
+    body: post
+      ? post.body
+      : [{ type: 'paragraph', children: [{ text: '', marks: '' }] }],
+    coverImage: post ? post.cover_image : '',
+  };
+  const methods = useForm({ defaultValues });
+  console.log(methods.watch());
   async function createPost() {
     if (
       !title ||
@@ -40,7 +55,7 @@ export default function Draft({ post }) {
         onSubmit={() => methods.handleSubmit(createPost())}
       >
         <Main post={post} />
-        <Meta />
+        <Meta post={post} />
       </Flex>
     </FormProvider>
   );

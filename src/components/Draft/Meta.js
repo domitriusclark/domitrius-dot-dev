@@ -17,29 +17,10 @@ import { AssetDrawerContext } from '@components/AssetDrawer';
 const Circle = ({ color }) => <Icon as={FaCircle} color={color} size="sm" />;
 
 export default function Meta({ post }) {
-  const dateInputRef = React.useRef();
-
-  React.useEffect(() => {
-    const today = new Date();
-    const date = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`;
-
-    dateInputRef.current.value = date;
-  });
-
   const { onOpen } = React.useContext(AssetDrawerContext);
-
-  const [tag, setTag] = React.useState('');
   const [tagGroup, setTagGroup] = React.useState(post ? post.tags : []);
-  const [contentType, setContentType] = React.useState('Garden');
   const [published, setPublished] = React.useState(
     post ? post.published : false,
-  );
-
-  const [description, setDescription] = React.useState(
-    post ? post.description : '',
-  );
-  const [coverImageUrl, setCoverImageUrl] = React.useState(
-    post ? post.cover_image : '',
   );
 
   function addTag(tag) {
@@ -115,16 +96,11 @@ export default function Meta({ post }) {
       </HStack>
       <FormControl>
         <FormLabel>Date</FormLabel>
-        <Input
-          ref={dateInputRef}
-          disabled
-          onChange={() => setDate(e.target.value)}
-          type="date"
-        />
+        <Input disabled type="date" {...register('date')} />
       </FormControl>
       <FormControl>
         <FormLabel>Tags</FormLabel>
-        <Input type="text" />
+        <Input type="text" {...register('tag')} />
       </FormControl>
       <FormControl>
         <FormLabel>Banner</FormLabel>
