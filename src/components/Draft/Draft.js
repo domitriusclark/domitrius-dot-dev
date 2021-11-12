@@ -37,7 +37,7 @@ export default function Draft({ post }) {
         w="100%"
         minH="100%"
         p={10}
-        onSubmit={methods.handleSubmit(createPost())}
+        onSubmit={() => methods.handleSubmit(createPost())}
       >
         <Main post={post} />
         <Meta />

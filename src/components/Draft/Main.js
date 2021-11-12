@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import { useFormContext } from 'react-hook-form';
 import {
   Box,
   Flex,
@@ -18,20 +19,22 @@ import {
 import Editor from '@components/Editor';
 
 function InputGroup({ post }) {
-  const [title, setTitle] = React.useState(post ? post.title : '');
+  // const [title, setTitle] = React.useState(post ? post.title : '');
+  const { register, watch } = useFormContext();
+
+  console.log(watch());
   const [contentType, setContentType] = React.useState('Garden');
   return (
     <HStack>
       <FormControl>
         <FormLabel>Title</FormLabel>
         <Input
-          onChange={(e) => setTitle(e.target.value)}
           bg="white"
-          value={title}
           color="black"
           _placeholder={{
             color: 'black',
           }}
+          {...register('title', { required: 'This is required' })}
         />
       </FormControl>
       <FormControl>
