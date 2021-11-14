@@ -19,7 +19,7 @@ export default function Index() {
         </Text>
         <Text mt={8}>
           Domitrius Clark | Jamstack Comunity Engineer{' '}
-          <Link _hover={{ color: '#00AD9F' }} href="wwww.netlify.com">
+          <Link href="https://www.netlify.com" _hover={{ color: '#00AD9F' }}>
             @Netlify
           </Link>
           <br />

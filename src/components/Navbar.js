@@ -3,9 +3,23 @@ import { Flex, Text, Box, Button } from '@chakra-ui/react';
 import ThemeTogglebutton from '@components/ThemeToggleButton';
 import Link from '@components/Link';
 import { AssetDrawerContext } from '@components/AssetDrawer';
+import useHotKey from '@hooks/useHotkey';
+
+const sequence = ['Meta', 'k'];
 
 export default function Navbar() {
   const { onOpen } = React.useContext(AssetDrawerContext);
+
+  const [keysPressed, setKeysPressed] = React.useState(false);
+  useHotKey(sequence, () => setKeysPressed(true));
+
+  React.useEffect(() => {
+    if (keysPressed) {
+      onOpen();
+      setKeysPressed(false);
+    }
+  }, [keysPressed]);
+
   return (
     <Flex
       w="100%"

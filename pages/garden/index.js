@@ -7,8 +7,6 @@ import supabase from '@utils/initSupabase';
 export default function BlogPage({ posts }) {
   const [filteredPosts, setFilteredPosts] = React.useState(posts);
 
-  console.log(filteredPosts);
-
   const handleFilter = (data) => {
     setFilteredPosts(data);
   };

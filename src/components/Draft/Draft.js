@@ -19,7 +19,7 @@ export default function Draft({ post }) {
     coverImage: post ? post.cover_image : '',
   };
   const methods = useForm({ defaultValues });
-  console.log(methods.watch());
+
   async function createPost() {
     if (
       !title ||
