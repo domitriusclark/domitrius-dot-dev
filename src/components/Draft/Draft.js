@@ -4,6 +4,8 @@ import { Flex } from '@chakra-ui/react';
 import Main from './Main';
 import Meta from './Meta';
 
+import slugify from '@utils/slugify';
+
 const date = new Date();
 const today = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
 
@@ -25,27 +27,17 @@ export default function Draft({ post }) {
       : [{ type: 'paragraph', children: [{ text: '', marks: '' }] }],
   );
 
-  async function createPost() {
-    if (
-      !title ||
-      !body ||
-      !tagGroup ||
-      !body ||
-      !coverImageUrl ||
-      !description
-    ) {
-      return;
-    }
-
+  async function createPost({ title, tags, description, coverImage }) {
     await fetch('/api/post', {
       method: 'POST',
       body: JSON.stringify({
         title,
         body,
-        tags: tagGroup,
+        tags,
         description,
-        cover_image: coverImageUrl,
+        cover_image: coverImage,
         slug: slugify(title),
+        created_at: date.toISOString().toLocaleString('en-US'),
       }),
     });
   }
@@ -57,7 +49,7 @@ export default function Draft({ post }) {
         w="100%"
         minH="100%"
         p={10}
-        onSubmit={() => methods.handleSubmit(createPost())}
+        onSubmit={methods.handleSubmit(createPost)}
       >
         <Main post={post} body={body} setBody={setBody} />
         <Meta post={post} />

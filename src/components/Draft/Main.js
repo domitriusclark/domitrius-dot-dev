@@ -1,6 +1,5 @@
-import * as React from 'react';
-
 import { useFormContext } from 'react-hook-form';
+
 import {
   Box,
   Flex,
@@ -85,7 +84,7 @@ export default function Main({ post, body, setBody }) {
   return (
     <Flex direction="column" minH="100%" w="70%">
       <InputGroup post={post} />
-      <EditorArea post={post} value={body} setValue={setBody} />
+      <EditorArea post={post} body={body} setBody={setBody} />
     </Flex>
   );
 }
