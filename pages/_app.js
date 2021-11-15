@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { DefaultSeo } from 'next-seo';
 import { QueryClient, QueryClientProvider } from 'react-query';

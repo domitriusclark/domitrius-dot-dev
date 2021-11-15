@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Flex } from '@chakra-ui/react';
 import Main from './Main';
@@ -13,12 +14,16 @@ export default function Draft({ post }) {
     date: today,
     tag: '',
     description: post ? post.description : '',
-    body: post
-      ? post.body
-      : [{ type: 'paragraph', children: [{ text: '', marks: '' }] }],
     coverImage: post ? post.cover_image : '',
   };
+
   const methods = useForm({ defaultValues });
+
+  const [body, setBody] = React.useState(
+    post
+      ? post.body
+      : [{ type: 'paragraph', children: [{ text: '', marks: '' }] }],
+  );
 
   async function createPost() {
     if (
@@ -54,7 +59,7 @@ export default function Draft({ post }) {
         p={10}
         onSubmit={() => methods.handleSubmit(createPost())}
       >
-        <Main post={post} />
+        <Main post={post} body={body} setBody={setBody} />
         <Meta post={post} />
       </Flex>
     </FormProvider>

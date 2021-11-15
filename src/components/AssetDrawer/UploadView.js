@@ -1,3 +1,4 @@
+import * as React from 'react';
 import {
   Flex,
   Input,
@@ -10,8 +11,6 @@ import {
   Image,
   Button,
 } from '@chakra-ui/react';
-
-import React from 'react';
 
 function UploadImage({ publicId, path }) {
   const [fileToUpload, setFileToUpload] = React.useState();

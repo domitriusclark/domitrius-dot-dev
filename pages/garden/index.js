@@ -1,5 +1,5 @@
 import { Box, Stack } from '@chakra-ui/react';
-import React from 'react';
+import * as React from 'react';
 import ContentBox from '@components/ContentBox';
 import Search from '@components/Search';
 import supabase from '@utils/initSupabase';

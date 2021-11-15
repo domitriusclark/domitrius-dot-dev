@@ -49,12 +49,7 @@ function InputGroup() {
   );
 }
 
-function EditorArea({ post }) {
-  const [body, setBody] = React.useState(
-    post
-      ? post.body
-      : [{ type: 'paragraph', children: [{ text: '', marks: '' }] }],
-  );
+function EditorArea({ post, body, setBody }) {
   return (
     <Flex
       direction="column"
@@ -86,11 +81,11 @@ function EditorArea({ post }) {
   );
 }
 
-export default function Main({ post }) {
+export default function Main({ post, body, setBody }) {
   return (
     <Flex direction="column" minH="100%" w="70%">
       <InputGroup post={post} />
-      <EditorArea post={post} />
+      <EditorArea post={post} value={body} setValue={setBody} />
     </Flex>
   );
 }

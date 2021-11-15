@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import NextImage from 'next/image';
 import { useImage } from 'use-cloudinary';
 import { Box, chakra } from '@chakra-ui/react';
