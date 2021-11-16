@@ -7,18 +7,20 @@ import {
   FormLabel,
   FormControl,
   Input,
+  InputGroup,
+  InputRightAddon,
   Text,
   Textarea,
   Icon,
 } from '@chakra-ui/react';
-import { FaCircle } from 'react-icons/fa';
+import { FaTrash, FaCircle } from 'react-icons/fa';
 import { AssetDrawerContext } from '@components/AssetDrawer';
 import { useFormContext } from 'react-hook-form';
 
 const Circle = ({ color }) => <Icon as={FaCircle} color={color} size="sm" />;
 
 export default function Meta({ post }) {
-  const { register } = useFormContext();
+  const { register, watch, resetField } = useFormContext();
   const { onOpen } = React.useContext(AssetDrawerContext);
   const [tagGroup, setTagGroup] = React.useState(post ? post.tags : []);
   const [published, setPublished] = React.useState(
@@ -27,12 +29,12 @@ export default function Meta({ post }) {
 
   function addTag(tag) {
     if (tagGroup.some((t) => tag === t)) {
-      setTag('');
+      resetField('tag');
       return;
     }
 
     setTagGroup((prev) => [tag, ...prev]);
-    setTag('');
+    resetField('tag');
   }
 
   async function editPost() {
@@ -102,7 +104,35 @@ export default function Meta({ post }) {
       </FormControl>
       <FormControl>
         <FormLabel>Tags</FormLabel>
-        <Input bg="white" type="text" {...register('tag')} />
+        <Flex direction="column" mt={4}>
+          <InputGroup w="420px">
+            <Input
+              bg="white"
+              color="black"
+              _placeholder={{ color: 'black' }}
+              placeholder="Tags..."
+              {...register('tag')}
+            />
+            <InputRightAddon bg="none" border="none">
+              <Button onClick={() => addTag(watch('tag'))}>+</Button>
+            </InputRightAddon>
+          </InputGroup>
+          <Flex>
+            {tagGroup.length > 0 &&
+              tagGroup.map((tag) => (
+                <Button
+                  onClick={() =>
+                    setTagGroup((prev) => prev.filter((t) => tag !== t))
+                  }
+                  leftIcon={<Icon as={FaTrash} color="red" />}
+                  mr={6}
+                  mt={6}
+                >
+                  {tag}
+                </Button>
+              ))}
+          </Flex>
+        </Flex>
       </FormControl>
       <FormControl>
         <FormLabel>Banner</FormLabel>

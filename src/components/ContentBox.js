@@ -49,9 +49,7 @@ export default function ContentBox({ post }) {
           <Text pb="0.5rem">{description}</Text>
         </Box>
         <Stack direction="row" spacing={3}>
-          {tags.map((tag) => (
-            <Tag key={tag}>#{tag}</Tag>
-          ))}
+          {tags && tags.map((tag) => <Tag key={tag}>#{tag}</Tag>)}
         </Stack>
       </Stack>
       {process.env.NODE_ENV === 'development' && (
