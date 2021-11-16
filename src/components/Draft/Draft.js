@@ -12,11 +12,11 @@ const today = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
 export default function Draft({ post }) {
   const defaultValues = {
     title: post ? post.title : '',
-    contentType: post ? post.contentType : 'Garden',
+    content_type: post ? post.content_type : 'Garden',
     date: today,
     tag: '',
     description: post ? post.description : '',
-    coverImage: post ? post.cover_image : '',
+    cover_image: post ? post.cover_image : '',
   };
 
   const methods = useForm({ defaultValues });
@@ -27,7 +27,13 @@ export default function Draft({ post }) {
       : [{ type: 'paragraph', children: [{ text: '', marks: '' }] }],
   );
 
-  async function createPost({ title, tags, description, coverImage }) {
+  async function createPost({
+    title,
+    tags,
+    description,
+    cover_image,
+    content_type,
+  }) {
     await fetch('/api/post', {
       method: 'POST',
       body: JSON.stringify({
@@ -35,7 +41,8 @@ export default function Draft({ post }) {
         body,
         tags,
         description,
-        cover_image: coverImage,
+        content_type,
+        cover_image: cover_image,
         slug: slugify(title),
         created_at: date.toISOString().toLocaleString('en-US'),
       }),

@@ -111,7 +111,7 @@ export default function Meta({ post }) {
             Media Library
           </Button>
           <Text size="lg">OR</Text>
-          <Input bg="white" placeholder="URL" {...register('coverImage')} />
+          <Input bg="white" placeholder="URL" {...register('cover_image')} />
         </VStack>
       </FormControl>
       <FormControl h="100%">

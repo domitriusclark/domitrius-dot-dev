@@ -38,7 +38,7 @@ function InputGroup() {
         <Select
           bg="white"
           placeholder="Select option"
-          {...register('contentType')}
+          {...register('content_type')}
         >
           <option value="Garden">Garden</option>
           <option value="Daily">Daily</option>
