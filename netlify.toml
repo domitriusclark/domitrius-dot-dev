@@ -4,5 +4,6 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs@beta"
+  
 [functions]
   node_bundler = "esbuild"
