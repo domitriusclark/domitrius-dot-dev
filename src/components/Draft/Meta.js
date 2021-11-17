@@ -16,6 +16,7 @@ import {
 import { FaTrash, FaCircle } from 'react-icons/fa';
 import { AssetDrawerContext } from '@components/AssetDrawer';
 import { useFormContext } from 'react-hook-form';
+import Image from '@components/Image';
 
 const Circle = ({ color }) => <Icon as={FaCircle} color={color} size="sm" />;
 
@@ -142,6 +143,14 @@ export default function Meta({ post }) {
           </Button>
           <Text size="lg">OR</Text>
           <Input bg="white" placeholder="URL" {...register('cover_image')} />
+          {watch('cover_image') && (
+            <Image
+              src={watch('cover_image')}
+              height={200}
+              width={500}
+              pt="8px"
+            />
+          )}
         </VStack>
       </FormControl>
       <FormControl h="100%">
