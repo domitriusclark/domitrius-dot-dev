@@ -44,6 +44,7 @@
     "use-cloudinary": "^4.1.1"
   },
   "devDependencies": {
+    "@netlify/plugin-nextjs": "^4.0.0-beta.6",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5"
