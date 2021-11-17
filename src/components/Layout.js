@@ -1,21 +1,17 @@
 import Navbar from '@components/Navbar';
-import SEO from '@components/SEO';
-import AssetDrawer from '@components/AssetDrawer';
-import { useDisclosure } from '@chakra-ui/react';
+import AssetDrawer, { AssetDrawerProvider } from '@components/AssetDrawer';
+import { Box, Flex } from '@chakra-ui/react';
 
-export default function Layout({
-  title,
-  description,
-  twitter,
-  openGraph,
-  children,
-}) {
-  const { onOpen, onClose, isOpen } = useDisclosure();
+export default function Layout({ children }) {
   return (
-    <>
-      <AssetDrawer onClose={onClose} isOpen={isOpen} />
-      <Navbar onOpen={onOpen} />
-      {children}
-    </>
+    <AssetDrawerProvider>
+      <AssetDrawer />
+      <Flex h="100vh" direction="column">
+        <Navbar />
+        <Box color="gray.100" bg="gray.600" flex="1">
+          {children}
+        </Box>
+      </Flex>
+    </AssetDrawerProvider>
   );
 }

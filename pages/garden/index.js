@@ -1,13 +1,11 @@
 import { Box, Stack } from '@chakra-ui/react';
-import React from 'react';
+import * as React from 'react';
 import ContentBox from '@components/ContentBox';
 import Search from '@components/Search';
 import supabase from '@utils/initSupabase';
 
 export default function BlogPage({ posts }) {
   const [filteredPosts, setFilteredPosts] = React.useState(posts);
-
-  console.log(filteredPosts);
 
   const handleFilter = (data) => {
     setFilteredPosts(data);

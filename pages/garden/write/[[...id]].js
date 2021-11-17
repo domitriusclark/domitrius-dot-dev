@@ -1,14 +1,8 @@
-import React from 'react';
-import { Flex } from '@chakra-ui/react';
-import BlogForm from '@components/BlogForm';
+import Draft from '@components/Draft';
 import supabase from '@utils/initSupabase';
 
-export default function AuthorPost({ post }) {
-  return (
-    <Flex w="100%" h="100%" p={10}>
-      {post ? <BlogForm post={post} /> : <BlogForm />}
-    </Flex>
-  );
+export default function DraftPost({ post }) {
+  return <Draft post={post} />;
 }
 
 export async function getServerSideProps(context) {

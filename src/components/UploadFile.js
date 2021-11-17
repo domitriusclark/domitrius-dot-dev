@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 import { Text, Button, Input, Flex, Image } from '@chakra-ui/react';
 

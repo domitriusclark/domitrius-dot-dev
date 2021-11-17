@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import Fuse from 'fuse.js';
 
 import { Flex, Stack, Input } from '@chakra-ui/react';

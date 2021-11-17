@@ -10,11 +10,13 @@ const handler = nc({
 handler.post(async (req, res) => {
   const newPost = JSON.parse(req.body);
 
-  const result = await supabase.from('Posts').insert([{ ...newPost }]);
-  const post = result.data[0];
-
-  console.log('Successfully created your post!');
-  res.send({ post });
+  try {
+    const result = await supabase.from('Posts').insert([{ ...newPost }]);
+    const post = result.data[0];
+    res.send({ post });
+  } catch (e) {
+    res.status(400).send({ error: e });
+  }
 });
 
 handler.put(async (req, res) => {
