@@ -20,7 +20,7 @@ const createKeyChecker = (hotkeys = []) => {
   };
 };
 
-function useHotKey(hotKeys, onMatch) {
+export default function useHotKey(hotKeys, onMatch) {
   const keyCrawler = React.useMemo(() => createKeyChecker([].concat(hotKeys)), [
     hotKeys,
   ]);
@@ -36,5 +36,3 @@ function useHotKey(hotKeys, onMatch) {
     return () => window.removeEventListener('keydown', listen);
   });
 }
-
-export default useHotKey;
