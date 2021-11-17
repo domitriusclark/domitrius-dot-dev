@@ -3,7 +3,6 @@
   publish = ".next"
 
 [[plugins]]
-  package = "@netlify/plugin-nextjs"
-
+  package = "@netlify/plugin-nextjs@beta"
 [functions]
   node_bundler = "esbuild"
