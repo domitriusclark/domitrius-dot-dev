@@ -3,7 +3,7 @@ import { Flex, Text, Box, Button } from '@chakra-ui/react';
 import ThemeTogglebutton from '@components/ThemeToggleButton';
 import Link from '@components/Link';
 import { AssetDrawerContext } from '@components/AssetDrawer';
-import useHotKey from '@hooks/useHotkey';
+import useHotKey from '@hooks/useHotKey';
 
 const sequence = ['Meta', 'k'];
 
