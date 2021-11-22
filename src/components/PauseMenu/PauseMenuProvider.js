@@ -6,8 +6,8 @@ export const PauseMenuContext = createContext();
 export default function PauseMenuProvider({ children }) {
   const { onOpen, onClose, isOpen } = useDisclosure();
   return (
-    <AssetDrawerContext.Provider value={{ onOpen, onClose, isOpen }}>
+    <PauseMenuContext.Provider value={{ onOpen, onClose, isOpen }}>
       {children}
-    </AssetDrawerContext.Provider>
+    </PauseMenuContext.Provider>
   );
 }

@@ -1,26 +1,21 @@
-import {
-  Modal,
-  ModalOverlay,
-  ModalHeader,
-  ModalCloseButton,
-  ModalBody,
-  ModalContent,
-  Lorem,
-} from '@chakra-ui/react';
+import * as React from 'react';
+import { Modal, ModalBody, ModalContent, ModalOverlay } from '@chakra-ui/react';
 
-export default function PauseMenu() {
+import { PauseMenuContext } from './PauseMenuProvider';
+
+export default function PauseMenu({ size, content }) {
+  const { isOpen, onClose } = React.useContext(PauseMenuContext);
+
   return (
-    <Modal onClose={onClose} size={size} isOpen={isOpen}>
+    <Modal
+      isCentered
+      onClose={onClose}
+      size={size ? size : 'xl'}
+      isOpen={isOpen}
+    >
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Modal Title</ModalHeader>
-        <ModalCloseButton />
-        <ModalBody>
-          <Lorem count={2} />
-        </ModalBody>
-        <ModalFooter>
-          <Button onClick={onClose}>Close</Button>
-        </ModalFooter>
+        <ModalBody minH="400px">{content}</ModalBody>
       </ModalContent>
     </Modal>
   );

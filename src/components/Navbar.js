@@ -1,14 +1,21 @@
 import * as React from 'react';
-import { Flex, Text, Box, Button } from '@chakra-ui/react';
+import {
+  Tooltip,
+  Icon,
+  Flex,
+  Text,
+  Button,
+  QuestionIcon,
+} from '@chakra-ui/react';
 import ThemeTogglebutton from '@components/ThemeToggleButton';
 import Link from '@components/Link';
-import { AssetDrawerContext } from '@components/AssetDrawer';
+import { PauseMenuContext } from '@components/PauseMenu';
 import useHotKey from '@hooks/useHotKey';
 
 const sequence = ['Meta', 'k'];
 
 export default function Navbar() {
-  const { onOpen } = React.useContext(AssetDrawerContext);
+  const { onOpen } = React.useContext(PauseMenuContext);
 
   const [keysPressed, setKeysPressed] = React.useState(false);
   useHotKey(sequence, () => setKeysPressed(true));
@@ -30,10 +37,22 @@ export default function Navbar() {
       bg="gray.800"
       color="#ECF1F2"
     >
-      <Flex flexDirection="row" justifyContent="center" alignItems="center">
+      <Flex>
         <Text pl={3}>Domitrius Clark </Text>
       </Flex>
-      <Box>
+      <Flex align="center" justify="center">
+        <Flex
+          direction="column"
+          align="center"
+          justify="center"
+          color="gray.200"
+          borderRadius="full"
+          w="100px"
+          border="1px solid white"
+          p={2}
+        >
+          <Text>CMD + K</Text>
+        </Flex>
         <ThemeTogglebutton />
         <Link m={4} href="/">
           Home
@@ -51,7 +70,7 @@ export default function Navbar() {
             </Button>
           </>
         )}
-      </Box>
+      </Flex>
     </Flex>
   );
 }

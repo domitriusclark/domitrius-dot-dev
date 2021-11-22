@@ -1,17 +1,32 @@
 import Navbar from '@components/Navbar';
-import AssetDrawer, { AssetDrawerProvider } from '@components/AssetDrawer';
-import { Box, Flex } from '@chakra-ui/react';
+import PauseMenu, { PauseMenuProvider } from '@components/PauseMenu';
+import { Box, Input, Flex } from '@chakra-ui/react';
+
+function MenuContent() {
+  return (
+    <Flex>
+      <Input
+        mt={2}
+        p={1}
+        bg="white"
+        borderRadius="lg"
+        placeholder="Search..."
+        size="xl"
+      />
+    </Flex>
+  );
+}
 
 export default function Layout({ children }) {
   return (
-    <AssetDrawerProvider>
-      <AssetDrawer />
+    <PauseMenuProvider>
+      <PauseMenu content={<MenuContent />} />
       <Flex h="100vh" direction="column">
         <Navbar />
         <Box color="gray.100" bg="gray.600" flex="1">
           {children}
         </Box>
       </Flex>
-    </AssetDrawerProvider>
+    </PauseMenuProvider>
   );
 }
