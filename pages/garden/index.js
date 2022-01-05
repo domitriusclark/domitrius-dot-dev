@@ -1,37 +1,33 @@
-import { Box, Stack } from '@chakra-ui/react';
-import * as React from 'react';
-import ContentBox from '@components/ContentBox';
-import Search from '@components/Search';
-import supabase from '@utils/initSupabase';
+// libs
+import fetchTableById from '@lib/notion/fetchTableById';
 
-export default function BlogPage({ posts }) {
-  const [filteredPosts, setFilteredPosts] = React.useState(posts);
+// components
+import { Flex } from '@chakra-ui/react';
+import Link from 'next/link';
 
-  const handleFilter = (data) => {
-    setFilteredPosts(data);
-  };
-
+const PostsPage = ({ posts }) => {
   return (
-    <Box pb={3}>
-      {/* Content Area + Input + Tag filter */}
-      <Stack spacing={[4, 8, 12]} justify="center" alignItems="center">
-        <Search posts={posts} handleFilter={handleFilter} />
-        <Stack spacing={[2, 6, 12]}>
-          {filteredPosts?.map((post) => (
-            <ContentBox key={post.slug} post={post} />
-          ))}
-        </Stack>
-      </Stack>
-    </Box>
+    <Flex>
+      {posts.map((post) => {
+        console.log(post);
+        return (
+          <Link key={post.id} href={`/garden/${post.id}`}>
+            {post.title}
+          </Link>
+        );
+      })}
+    </Flex>
   );
-}
+};
 
-export async function getStaticProps() {
-  const { data } = await supabase.from('Posts').select();
+export const getStaticProps = async () => {
+  const posts = await fetchTableById(process.env.NOTION_DATABASE_ID);
 
   return {
     props: {
-      posts: data,
+      posts,
     },
   };
-}
+};
+
+export default PostsPage;
