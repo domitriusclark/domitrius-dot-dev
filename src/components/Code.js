@@ -1,6 +1,5 @@
-import * as React from 'react';
-import { highlight, languages } from 'prismjs';
 import 'prismjs/components/prism-jsx';
+import { highlight, languages } from 'prismjs';
 
 const Code = ({ code, language = 'javascript' }) => {
   const languageL = language.toLowerCase();
