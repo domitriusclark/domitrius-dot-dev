@@ -9,7 +9,6 @@ const PostsPage = ({ posts }) => {
   return (
     <Flex>
       {posts.map((post) => {
-        console.log(post);
         return (
           <Link key={post.id} href={`/garden/${post.id}`}>
             {post.title}

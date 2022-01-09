@@ -1,15 +1,9 @@
 import * as React from 'react';
-import { Flex, Text, Box, Button } from '@chakra-ui/react';
+import { Flex, Text, Box } from '@chakra-ui/react';
 import ThemeTogglebutton from '@components/ThemeToggleButton';
 import Link from '@components/Link';
-import { AssetDrawerContext } from '@components/AssetDrawer';
-import useCommandKMenu from '@hooks/useCommandKMenu';
 
 export default function Navbar() {
-  const { onOpen } = React.useContext(AssetDrawerContext);
-
-  useCommandKMenu(onOpen);
-
   return (
     <Flex
       w="100%"
@@ -29,18 +23,8 @@ export default function Navbar() {
           Home
         </Link>
         <Link m={4} href="/garden">
-          Blog
+          Garden
         </Link>
-        {process.env.NODE_ENV === 'development' && (
-          <>
-            <Link px={2} href="/garden/write">
-              Write
-            </Link>
-            <Button color="gray.800" size="sm" ml={3} onClick={onOpen}>
-              Assets
-            </Button>
-          </>
-        )}
       </Box>
     </Flex>
   );
