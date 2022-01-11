@@ -46,7 +46,7 @@ const PostsPage = ({ posts }) => {
   );
 };
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const posts = await fetchTableById(process.env.NOTION_DATABASE_ID);
 
   return {
