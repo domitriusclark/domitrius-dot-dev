@@ -1,32 +1,10 @@
 import fetchPageById from '@lib/notion/fetchPageById';
 import { NotionRenderer } from 'react-notion';
+import { getPageTitle } from 'notion-utils';
+import Notion from '@components/Notion';
 
-import { Container, Text, Heading } from '@chakra-ui/react';
-
-export const PostPage = ({ blocks }) => {
-  return (
-    <Container>
-      <NotionRenderer
-        blockMap={blocks}
-        customBlockComponents={{
-          text: ({ renderComponent }) => {
-            return (
-              <Text color="purple.500" size="xl">
-                {renderComponent()}
-              </Text>
-            );
-          },
-          header: ({ renderComponent }) => {
-            return (
-              <Heading as="h1" color="red.300">
-                {renderComponent()}
-              </Heading>
-            );
-          },
-        }}
-      />
-    </Container>
-  );
+export const Garden = ({ blocks }) => {
+  return <Notion blocks={blocks} />;
 };
 
 export const getServerSideProps = async ({ params }) => {
@@ -39,4 +17,4 @@ export const getServerSideProps = async ({ params }) => {
   };
 };
 
-export default PostPage;
+export default Garden;
