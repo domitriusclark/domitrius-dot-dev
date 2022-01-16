@@ -1,37 +1,22 @@
-import Highlight, { defaultProps } from 'prism-react-renderer';
-import theme from 'prism-react-renderer/themes/vsDark';
-import CopyButton from '@components/CopyButton.js';
+import 'prismjs/components/prism-jsx';
+import { highlight, languages } from 'prismjs';
 
-export default function Code({ children, className }) {
-  const language = className.replace(/language-/, '');
+const Code = ({ code, language = 'javascript' }) => {
+  const languageL = language.toLowerCase();
+  const prismLanguage = languages[languageL] || languages.javascript;
+
+  const langClass = `language-${language.toLowerCase()}`;
+
   return (
-    <Highlight
-      {...defaultProps}
-      theme={theme}
-      code={children.trim()}
-      language={language}
-    >
-      {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <pre
-          className={className}
-          style={{
-            ...style,
-            overflow: 'scroll',
-            marginTop: 20,
-            marginBottom: 20,
-            padding: 16,
-          }}
-        >
-          {tokens.map((line, i) => (
-            <div key={i} {...getLineProps({ line, key: i })}>
-              {line.map((token, key) => (
-                <span key={key} {...getTokenProps({ token, key })} />
-              ))}
-            </div>
-          ))}
-          <CopyButton value={children.trim()} />
-        </pre>
-      )}
-    </Highlight>
+    <pre className={`notion-code ${langClass}`}>
+      <code
+        className={langClass}
+        dangerouslySetInnerHTML={{
+          __html: highlight(code, prismLanguage, language),
+        }}
+      />
+    </pre>
   );
-}
+};
+
+export default Code;

@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import * as React from 'react';
 
 const createKeyChecker = (hotkeys = []) => {
@@ -20,7 +21,7 @@ const createKeyChecker = (hotkeys = []) => {
   };
 };
 
-export default function useHotKey(hotKeys, onMatch) {
+function useHotKey(hotKeys, onMatch) {
   const keyCrawler = React.useMemo(() => createKeyChecker([].concat(hotKeys)), [
     hotKeys,
   ]);
@@ -35,4 +36,17 @@ export default function useHotKey(hotKeys, onMatch) {
     window.addEventListener('keydown', listen);
     return () => window.removeEventListener('keydown', listen);
   });
+}
+
+export default function useCommandKMenu(onOpen) {
+  const sequence = ['Meta', 'k'];
+  const [keysPressed, setKeysPressed] = useState(false);
+  useHotKey(sequence, () => setKeysPressed(true));
+
+  useEffect(() => {
+    if (keysPressed) {
+      onOpen();
+      setKeysPressed(false);
+    }
+  }, [keysPressed]);
 }

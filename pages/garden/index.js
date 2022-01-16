@@ -1,37 +1,67 @@
-import { Box, Stack } from '@chakra-ui/react';
-import * as React from 'react';
-import ContentBox from '@components/ContentBox';
-import Search from '@components/Search';
-import supabase from '@utils/initSupabase';
+// libs
+import fetchTableById from '@lib/notion/fetchTableById';
 
-export default function BlogPage({ posts }) {
-  const [filteredPosts, setFilteredPosts] = React.useState(posts);
+// components
+import {
+  Flex,
+  HStack,
+  Image,
+  LinkBox,
+  LinkOverlay,
+  Tag,
+  Text,
+  VStack,
+} from '@chakra-ui/react';
 
-  const handleFilter = (data) => {
-    setFilteredPosts(data);
-  };
-
+const PostsPage = ({ posts }) => {
   return (
-    <Box pb={3}>
-      {/* Content Area + Input + Tag filter */}
-      <Stack spacing={[4, 8, 12]} justify="center" alignItems="center">
-        <Search posts={posts} handleFilter={handleFilter} />
-        <Stack spacing={[2, 6, 12]}>
-          {filteredPosts?.map((post) => (
-            <ContentBox key={post.slug} post={post} />
-          ))}
-        </Stack>
-      </Stack>
-    </Box>
+    <HStack spacing={10} pt={10}>
+      {posts.map((post) => {
+        console.log(post);
+        return (
+          <LinkBox
+            key={post.id}
+            borderRadius="md"
+            boxShadow="lg"
+            ml={8}
+            height="300px"
+            width="200px"
+            bgImage={post.banner}
+            bgSize="cover"
+            bgPosition="center"
+          >
+            <Flex direction="column" justify="flex-end" p={4} h="100%">
+              <VStack align="flex-start" maxH="50%">
+                <LinkOverlay href={`/garden/${post.id}`} bg="white" p={1}>
+                  {post.title}
+                </LinkOverlay>
+                <Text bg="white" p={1}>
+                  {post.description}
+                </Text>
+                <HStack>
+                  {post.tags.map((tag) => (
+                    <Tag colorScheme="cyan" size="sm">
+                      {tag}
+                    </Tag>
+                  ))}
+                </HStack>
+              </VStack>
+            </Flex>
+          </LinkBox>
+        );
+      })}
+    </HStack>
   );
-}
+};
 
-export async function getStaticProps() {
-  const { data } = await supabase.from('Posts').select();
+export const getServerSideProps = async () => {
+  const posts = await fetchTableById(process.env.NOTION_DATABASE_ID);
 
   return {
     props: {
-      posts: data,
+      posts,
     },
   };
-}
+};
+
+export default PostsPage;
