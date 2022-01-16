@@ -5,7 +5,7 @@ export default function Layout({ children }) {
   return (
     <Flex h="100vh" direction="column">
       <Navbar />
-      <Box bg="gray.600" flex="1">
+      <Box color="purple.300" bg="gray.800" flex="1">
         {children}
       </Box>
     </Flex>

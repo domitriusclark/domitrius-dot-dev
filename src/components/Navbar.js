@@ -14,11 +14,12 @@ export default function Navbar() {
       bg="gray.800"
       color="#ECF1F2"
     >
-      <Flex flexDirection="row" justifyContent="center" alignItems="center">
-        <Text pl={3}>Domitrius Clark </Text>
-      </Flex>
+      <Flex
+        flexDirection="row"
+        justifyContent="center"
+        alignItems="center"
+      ></Flex>
       <Box>
-        <ThemeTogglebutton />
         <Link m={4} href="/">
           Home
         </Link>
