@@ -1,4 +1,4 @@
-import { Flex, Text } from '@chakra-ui/react';
+import { Flex, Text, HStack } from '@chakra-ui/react';
 import Link from '@components/Link';
 import Image from '@components/Image';
 
@@ -18,12 +18,15 @@ export default function Index() {
         >
           Welcome 👋
         </Text>
-        <Image
-          src="/anime-dom.png"
-          height={400}
-          width={295}
-          sx={{ marginRight: '30px!important' }}
-        />
+        <Flex>
+          <Image
+            src="/anime-dom.png"
+            height={400}
+            width={295}
+            sx={{ marginRight: '30px!important' }}
+          />
+        </Flex>
+
         <Text mt={8}>
           Domitrius Clark | Jamstack Comunity Engineer{' '}
           <Link href="https://www.netlify.com" _hover={{ color: '#00AD9F' }}>
