@@ -51,7 +51,7 @@ export const getServerSideProps = async () => {
   return {
     props: {
       notes,
-      garden,
+      garden: garden || [],
       lessons,
     },
   };

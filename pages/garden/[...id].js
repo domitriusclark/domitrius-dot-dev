@@ -3,6 +3,7 @@ import fetchTableById from '@lib/notion/fetchTableById';
 import Notion from '@components/Notion';
 
 export const Garden = ({ blocks, post }) => {
+  console.log(post);
   return <Notion post={post} blocks={blocks} />;
 };
 
