@@ -7,6 +7,7 @@ const overrides = {
     color: 'red.300',
     width: '100%',
     marginBottom: '32px',
+    minWidth: '100%',
   },
   '.notion-bookmark-title': {
     color: 'purple.200',
@@ -16,7 +17,9 @@ const overrides = {
 export default function Notion({ blocks, post }) {
   return (
     <Container maxW="3xl" centerContent pt={10} sx={overrides}>
-      <Image borderRadius="lg" w="100%" src={post.banner} mb={6} />
+      {post ? (
+        <Image borderRadius="lg" w="100%" src={post.banner} mb={6} />
+      ) : null}
       <NotionRenderer
         blockMap={blocks}
         customBlockComponents={{
