@@ -25,7 +25,7 @@ export default function Index() {
           sx={{ marginRight: '30px!important' }}
         />
         <Text mt={8}>
-          Domitrius Clark | Jamstack Comunity Engineer{' '}
+          Domitrius Clark | Jamstack Community Engineer{' '}
           <Link href="https://www.netlify.com" _hover={{ color: '#00AD9F' }}>
             @Netlify
           </Link>
