@@ -4,10 +4,10 @@ import Link from 'next/link';
 
 const overrides = {
   '.notion': {
-    color: 'red.300',
     width: '100%',
     marginBottom: '32px',
     minWidth: '100%',
+    color: 'gray.400',
   },
   '.notion-bookmark-title': {
     color: 'purple.200',
