@@ -44,8 +44,6 @@ const PostsPage = ({ lessons, notes, garden }) => {
 export const getServerSideProps = async () => {
   const posts = await fetchTableById(process.env.NOTION_DATABASE_ID);
 
-  console.log(posts);
-
   const notes = posts.filter((post) => post.content_type === 'notes');
   const garden = posts.filter((post) => post.content_type === 'garden');
   const lessons = posts.filter((post) => post.content_type === 'lesson');
