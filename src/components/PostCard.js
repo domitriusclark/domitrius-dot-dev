@@ -21,6 +21,7 @@ export default function PostCard({ post }) {
       bgImage={post.banner}
       bgSize="cover"
       bgPosition="center"
+      bg={!post.banner ? 'black' : ''}
     >
       <Flex h="100%" direction="column" justify="flex-end" p={4} h="100%">
         <VStack mb={post.tags.length > 2 ? 8 : 0} align="flex-start" maxH="50%">

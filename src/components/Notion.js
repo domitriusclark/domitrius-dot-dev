@@ -7,7 +7,19 @@ const overrides = {
     width: '100%',
     marginBottom: '32px',
     minWidth: '100%',
-    color: 'gray.400',
+    color: 'white',
+  },
+  '.notion-toggle': {
+    color: 'black',
+  },
+  '.notion-text': {
+    color: 'white',
+  },
+  '.notion-list': {
+    color: 'white',
+  },
+  '.notion-page-text': {
+    color: 'white',
   },
   '.notion-bookmark-title': {
     color: 'purple.200',

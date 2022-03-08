@@ -23,7 +23,7 @@ function CharacterCard({ title, image, setSelectedCharacter }) {
 
 function CharacterPicker({ setSelectedCharacter }) {
   return (
-    <Flex direction={{ base: 'column', md: 'row' }} sx={{ gap: '8px' }}>
+    <Flex direction={{ base: 'column', md: 'row' }} sx={{ gap: '8px' }} mt={20}>
       <CharacterCard
         setSelectedCharacter={setSelectedCharacter}
         image="/anime-domitrius.png"
@@ -71,19 +71,7 @@ export default function Index({ selectedCharacter, setSelectedCharacter }) {
   } else {
     return (
       <Flex direction="column" m={4} alignItems="center" justify="center">
-        <Heading
-          color="gray.300"
-          as="h1"
-          textDecor="underline"
-          alignSelf="center"
-          justifySelf="center"
-          mb={8}
-        >
-          Choose Your Character
-        </Heading>
-        <Flex direction="column" alignItems="center" textAlign="center">
-          <CharacterPicker setSelectedCharacter={setSelectedCharacter} />
-        </Flex>
+        <CharacterPicker setSelectedCharacter={setSelectedCharacter} />
       </Flex>
     );
   }
