@@ -6,9 +6,13 @@ function CharacterCard({ title, image, setSelectedCharacter }) {
       as="button"
       borderRadius="6px"
       onClick={() => setSelectedCharacter(title)}
-      _hover={{
-        border: '8px solid white',
-        marginBottom: '60px!important',
+      sx={{
+        '&:hover': {
+          border: '8px solid white',
+          img: {
+            filter: 'none',
+          },
+        },
       }}
       h="700px"
       w="300px"
@@ -16,7 +20,7 @@ function CharacterCard({ title, image, setSelectedCharacter }) {
       justify="space-between"
     >
       <Heading mt={8}>{title}</Heading>
-      <Image src={image} />
+      <Image src={image} filter="grayscale(100%)" />
     </VStack>
   );
 }
