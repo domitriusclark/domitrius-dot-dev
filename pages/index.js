@@ -53,7 +53,7 @@ export default function Index({ selectedCharacter, setSelectedCharacter }) {
       <Flex direction="column" m={16} alignItems="center" justify="center">
         <Flex direction="column" alignItems="center" textAlign="center" w="50%">
           <Heading as="h1">
-            Here's the anime and mange you should check out
+            Here's the anime and manga I've read/watched
           </Heading>
         </Flex>
       </Flex>
@@ -62,7 +62,8 @@ export default function Index({ selectedCharacter, setSelectedCharacter }) {
     return (
       <Flex direction="column" m={16} alignItems="center" justify="center">
         <Flex direction="column" alignItems="center" textAlign="center" w="50%">
-          <Heading as="h1">DX & Community tool creator</Heading>
+          <Heading as="h1">Domitrius Clark</Heading>
+          <Heading as="h2">DX Community Engineer</Heading>
         </Flex>
       </Flex>
     );
