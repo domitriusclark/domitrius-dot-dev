@@ -8,6 +8,18 @@ import { extendTheme } from '@chakra-ui/react';
 import '@fontsource/nunito';
 
 const theme = extendTheme({
+  styles: {
+    global: {
+      body: {
+        background: 'blackAlpha.900',
+        height: '100vh',
+        color: 'white',
+      },
+      '#__next': {
+        height: '100%',
+      },
+    },
+  },
   fonts: {
     main: ['Nunito Sans', 'sans-serif'],
   },
@@ -15,7 +27,7 @@ const theme = extendTheme({
 
 const App = ({ Component, pageProps }) => {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <DefaultSeo
         title="Domitrius' Personal Lair"
         description="On this site you'll learn about who Domitrius is and why you should get to know him."

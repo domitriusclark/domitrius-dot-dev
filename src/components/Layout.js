@@ -3,11 +3,9 @@ import { Box, Flex } from '@chakra-ui/react';
 
 export default function Layout({ children }) {
   return (
-    <Flex h="100vh" direction="column" bg="blackAlpha.900" fontFamily="main">
+    <Flex direction="column" fontFamily="main" h="full">
       <Navbar />
-      <Box color="purple.300" flex="1">
-        {children}
-      </Box>
+      {children}
     </Flex>
   );
 }

@@ -1,19 +1,23 @@
-import { Container } from '@chakra-ui/react';
+import { Button, Container } from '@chakra-ui/react';
 import { NotionRenderer } from 'react-notion';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const overrides = {
-  '.notion': {
-    color: 'red.300',
-  },
+  '.notion': {},
   '.notion-bookmark-title': {
     color: 'purple.200',
+  },
+  '.notion-page-link': {
+    color: 'white',
   },
 };
 
 export default function Notion({ blocks }) {
+  const router = useRouter();
   return (
-    <Container maxW="xl" centerContent pt={10} sx={overrides}>
+    <Container maxW="5xl" sx={overrides} h="auto">
+      <Button onClick={() => router.back()}>Go back</Button>
       <NotionRenderer
         blockMap={blocks}
         customBlockComponents={{

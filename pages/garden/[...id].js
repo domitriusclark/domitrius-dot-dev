@@ -1,6 +1,5 @@
+import { Container } from '@chakra-ui/react';
 import fetchPageById from '@lib/notion/fetchPageById';
-import { NotionRenderer } from 'react-notion';
-import { getPageTitle } from 'notion-utils';
 import Notion from '@components/Notion';
 
 export const Garden = ({ blocks }) => {
