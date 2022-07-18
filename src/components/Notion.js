@@ -4,7 +4,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 const overrides = {
-  '.notion': {},
+  '.notion': {
+    color: 'white',
+  },
   '.notion-bookmark-title': {
     color: 'purple.200',
   },
@@ -17,7 +19,9 @@ export default function Notion({ blocks }) {
   const router = useRouter();
   return (
     <Container maxW="5xl" sx={overrides} h="auto">
-      <Button onClick={() => router.back()}>Go back</Button>
+      <Button color="black" onClick={() => router.back()}>
+        Go back
+      </Button>
       <NotionRenderer
         blockMap={blocks}
         customBlockComponents={{

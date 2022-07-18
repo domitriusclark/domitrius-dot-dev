@@ -1,5 +1,25 @@
+import fetchTableById from '@lib/notion/fetchTableById';
+
 import { Container, Heading, Flex, Text } from '@chakra-ui/react';
 import Image from '@components/Image';
+
+export const getServerSideProps = async () => {
+  const posts = await fetchTableById(process.env.NOTION_DATABASE_ID);
+
+  /*
+    We need to: 
+    - get all of the posts
+    - find each post type and collect them
+    - grab a random item from each collection
+    - combine those into a single array and return to the page with it
+  */
+
+  return {
+    props: {
+      randomPosts: posts,
+    },
+  };
+};
 
 function GradientText({ children, direction, from, to }) {
   return (
@@ -13,7 +33,7 @@ function GradientText({ children, direction, from, to }) {
   );
 }
 
-export default function Index() {
+export default function Index({ randomPosts }) {
   return (
     <Flex
       h="auto"
