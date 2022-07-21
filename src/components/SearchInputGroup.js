@@ -1,9 +1,7 @@
 import React from 'react';
 import Fuse from 'fuse.js';
 
-import { Flex, Stack, Input } from '@chakra-ui/react';
-
-import TagList from './TagList';
+import { Stack, Input } from '@chakra-ui/react';
 
 const fuseOptions = {
   threshold: 0.35,
@@ -16,15 +14,15 @@ const fuseOptions = {
   keys: ['title', 'tags'],
 };
 
-export default function Search({ blogs, handleFilter }) {
+export default function SearchInputGroup({ content, handleFilter }) {
   const [searchValue, setSearchValue] = React.useState('');
   const [searchTags, setSearchTags] = React.useState([]);
-  const fuse = new Fuse(blogs, fuseOptions);
-  const tags = [...new Set(blogs.flatMap(({ tags }) => tags))];
+  const fuse = new Fuse(content, fuseOptions);
+  const tags = [...new Set(content.flatMap(({ tags }) => tags))];
 
   React.useEffect(() => {
     if (searchValue === '' && searchTags.length === 0) {
-      handleFilter(blogs);
+      handleFilter(content);
     } else {
       // Allow for a search for tag
       const formattedTags = [...searchTags.map((item) => ({ tags: item }))];
@@ -63,9 +61,6 @@ export default function Search({ blogs, handleFilter }) {
       align="center"
       spacing={[6, 8, 10]}
     >
-      <Flex justify="space-around">
-        <TagList tags={tags} value={searchTags} onChange={setSearchTags} />
-      </Flex>
       <Input value={searchValue} onChange={onChange} />
     </Stack>
   );

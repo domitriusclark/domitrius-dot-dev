@@ -1,9 +1,6 @@
 import {
-  Tooltip,
-  Box,
   Flex,
   HStack,
-  Image,
   LinkBox,
   LinkOverlay,
   Tag,
@@ -21,84 +18,13 @@ import {
 
 function ContentIcon({ contentType }) {
   if (contentType === 'lesson') {
-    return (
-      <Flex
-        as="span"
-        align="center"
-        justify="center"
-        border="2px solid black"
-        rounded="lg"
-        py={2}
-        px={4}
-        bg="whiteAlpha.400"
-      >
-        <Icon alignSelf="center" as={FcPodiumWithSpeaker} w={8} h={8} />
-      </Flex>
-    );
+    return <Icon alignSelf="center" as={FcPodiumWithSpeaker} w={5} h={5} />;
   } else if (contentType === 'snippets') {
-    return (
-      <Flex
-        as="span"
-        align="center"
-        justify="center"
-        border="2px solid black"
-        rounded="lg"
-        py={2}
-        px={4}
-        bg="whiteAlpha.400"
-      >
-        <Icon
-          alignSelf="center"
-          as={FcEngineering}
-          w={8}
-          h={8}
-          color="blue.500"
-        />
-      </Flex>
-    );
+    return <Icon alignSelf="center" as={FcEngineering} w={5} h={5} />;
   } else if (contentType === 'garden') {
-    return (
-      <Flex
-        as="span"
-        align="center"
-        justify="center"
-        border="2px solid black"
-        rounded="lg"
-        py={2}
-        px={4}
-        bg="whiteAlpha.400"
-      >
-        <Icon
-          alignSelf="center"
-          as={FcLandscape}
-          w={8}
-          h={8}
-          color="yellow.500"
-        />
-      </Flex>
-    );
+    return <Icon alignSelf="center" as={FcLandscape} w={5} h={5} />;
   } else if (contentType === 'notes') {
-    return (
-      <Flex
-        as="span"
-        align="center"
-        justify="center"
-        border="2px solid black"
-        rounded="lg"
-        py={2}
-        px={4}
-        bg="whiteAlpha.400"
-      >
-        <Icon
-          alignSelf="center"
-          m={2}
-          as={FcDocument}
-          w={4}
-          h={4}
-          color="red.500"
-        />
-      </Flex>
-    );
+    return <Icon alignSelf="center" as={FcDocument} w={5} h={5} />;
   }
 }
 
@@ -121,7 +47,7 @@ export default function Card({ post, width, height = 'auto' }) {
           <LinkOverlay
             href={`/garden/${post.id}`}
             bg="white"
-            p={2}
+            p={1}
             rounded="lg"
             border="1px solid black"
           >
