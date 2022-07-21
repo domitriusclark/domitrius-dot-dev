@@ -1,42 +1,38 @@
-import fetchTableById from '@lib/notion/fetchTableById';
+import { fetchTableById } from '@lib/notion';
+import getRandomItem from '@utils/getRandomItem';
 
-import { Container, Heading, Flex, Text } from '@chakra-ui/react';
+import { Container, Flex, Text, VStack } from '@chakra-ui/react';
+import Card from '@components/Card';
 import Image from '@components/Image';
+import GradientText from '@components/GradientText';
 
 export const getServerSideProps = async () => {
   const posts = await fetchTableById(process.env.NOTION_DATABASE_ID);
 
-  /*
-    We need to: 
-    - get all of the posts
-    - find each post type and collect them
-    - grab a random item from each collection
-    - combine those into a single array and return to the page with it
-  */
+  /* TODO: There's definitely a better way to create an array filled with random items from multiple other arrays */
+  const lessons = posts.filter((post) => post.content_type === 'lesson');
+  const snippets = posts.filter((post) => post.content_type === 'snippets');
+  const gardenPosts = posts.filter((post) => post.content_type === 'garden');
+  const notes = posts.filter((post) => post.content_type === 'notes');
+
+  const randomPosts = [
+    getRandomItem(lessons),
+    getRandomItem(snippets),
+    getRandomItem(gardenPosts),
+    getRandomItem(notes),
+  ];
 
   return {
     props: {
-      randomPosts: posts,
+      posts: randomPosts,
     },
   };
 };
 
-function GradientText({ children, direction, from, to }) {
-  return (
-    <Text
-      as="span"
-      bgClip="text"
-      bgGradient={`linear(${direction}, ${from}, ${to})`}
-    >
-      {children}
-    </Text>
-  );
-}
-
-export default function Index({ randomPosts }) {
+export default function Index({ posts }) {
   return (
     <Flex
-      h="auto"
+      h="100%"
       p={4}
       align="center"
       justify="space-around"
@@ -84,7 +80,11 @@ export default function Index({ randomPosts }) {
         </Container>
       </Flex>
       <Flex>
-        <Heading as="h1">Lets make this work</Heading>
+        <VStack justify="space-between" spacing={5} p={2} mt={10}>
+          {posts.map((post) => (
+            <Card post={post} width="100%" />
+          ))}
+        </VStack>
       </Flex>
     </Flex>
   );

@@ -1,7 +1,8 @@
-import { Button, Container } from '@chakra-ui/react';
+import { Icon, Button, Container } from '@chakra-ui/react';
 import { NotionRenderer } from 'react-notion';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { FcLeft } from 'react-icons/fc';
 
 const overrides = {
   '.notion': {
@@ -19,7 +20,13 @@ export default function Notion({ blocks }) {
   const router = useRouter();
   return (
     <Container maxW="5xl" sx={overrides} h="auto">
-      <Button color="black" onClick={() => router.back()}>
+      <Button
+        leftIcon={<FcLeft />}
+        variant="link"
+        color="white"
+        bg="none"
+        onClick={() => router.back()}
+      >
         Go back
       </Button>
       <NotionRenderer

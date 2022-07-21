@@ -1,6 +1,6 @@
-import fetchTableById from '@lib/notion/fetchTableById';
+import { fetchTableById } from '@lib/notion';
 
-import { HStack } from '@chakra-ui/react';
+import { VStack } from '@chakra-ui/react';
 import Card from '@components/Card';
 
 export const getServerSideProps = async () => {
@@ -15,10 +15,10 @@ export const getServerSideProps = async () => {
 
 export default function PostsPage({ posts }) {
   return (
-    <HStack spacing={10} pt={10}>
+    <VStack justify="space-between" spacing={5} p={3} mt={20}>
       {posts.map((post) => (
-        <Card post={post} />
+        <Card post={post} width={{ base: '100%', lg: '40%' }} />
       ))}
-    </HStack>
+    </VStack>
   );
 }
