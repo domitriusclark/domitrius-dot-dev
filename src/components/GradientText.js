@@ -6,6 +6,7 @@ export default function GradientText({ children, direction, from, to }) {
       as="span"
       bgClip="text"
       bgGradient={`linear(${direction}, ${from}, ${to})`}
+      textDecoration="underline"
     >
       {children}
     </Text>

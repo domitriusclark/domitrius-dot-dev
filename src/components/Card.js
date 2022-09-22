@@ -17,41 +17,43 @@ import {
 } from 'react-icons/fc';
 
 function ContentIcon({ contentType }) {
-  if (contentType === 'lesson') {
-    return <Icon alignSelf="center" as={FcPodiumWithSpeaker} w={5} h={5} />;
-  } else if (contentType === 'snippets') {
-    return <Icon alignSelf="center" as={FcEngineering} w={5} h={5} />;
-  } else if (contentType === 'garden') {
-    return <Icon alignSelf="center" as={FcLandscape} w={5} h={5} />;
-  } else if (contentType === 'notes') {
-    return <Icon alignSelf="center" as={FcDocument} w={5} h={5} />;
-  }
+  const icon = () => {
+    switch (contentType) {
+      case 'lesson':
+        return <FcPodiumWithSpeaker />;
+      case 'snippets':
+        return <FcEngineering />;
+      case 'garden':
+        return <FcLandscape />;
+      case 'notes':
+        return <FcDocument />;
+      default:
+        return null;
+    }
+  };
+
+  return <Icon as={icon} w={7} h={7} />;
 }
 
 export default function Card({ post, width, height = 'auto' }) {
   return (
     <LinkBox
       key={post.id}
-      borderRadius="md"
-      boxShadow="lg"
       width={width}
       height={height}
-      bgImage={post.banner}
-      bgSize="cover"
-      bgPosition="center"
-      color="black"
-      border="2px solid white"
+      color="white"
+      _hover={{
+        boxShadow: 'lg',
+        transform: 'scale(1.05)',
+        transition: 'all 0.1s ease-in-out',
+        border: '1px solid #fff',
+        borderRadius: 'lg',
+      }}
     >
       <Flex p={4} h="100%">
         <VStack align="flex-start" w="100%">
-          <LinkOverlay
-            href={`/garden/${post.id}`}
-            bg="white"
-            p={1}
-            rounded="lg"
-            border="1px solid black"
-          >
-            <Text fontSize="sm">{post.title}</Text>
+          <LinkOverlay href={`/garden/${post.id}`} p={1} rounded="lg">
+            <Text fontSize="md">{post.title}</Text>
           </LinkOverlay>
           <HStack>
             {post.tags.map((tag) => (
@@ -59,9 +61,9 @@ export default function Card({ post, width, height = 'auto' }) {
                 {tag}
               </Tag>
             ))}
+            <ContentIcon contentType={post.content_type} />
           </HStack>
         </VStack>
-        <ContentIcon contentType={post.content_type} />
       </Flex>
     </LinkBox>
   );

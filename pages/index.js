@@ -1,7 +1,7 @@
 import { fetchTableById } from '@lib/notion';
 import getRandomItem from '@utils/getRandomItem';
 
-import { Container, Flex, Text, VStack } from '@chakra-ui/react';
+import { HStack, Flex, Text, VStack } from '@chakra-ui/react';
 import Card from '@components/Card';
 import Image from '@components/Image';
 import GradientText from '@components/GradientText';
@@ -39,45 +39,36 @@ export default function Index({ posts }) {
       direction={{ base: 'column', lg: 'row' }}
     >
       <Flex
-        h="full"
-        direction="column"
-        m={16}
-        alignItems="center"
+        align="center"
         justify="center"
+        direction={{ base: 'column-reverse', lg: 'row' }}
       >
-        <Container
-          size="2xl"
-          direction="column"
-          alignItems="center"
-          textAlign="center"
-        >
-          <Text
-            color="white"
-            maxW="400px"
-            margin="auto"
-            fontSize="3xl"
-            mt={8}
-            boxDecorationBreak="clone"
-            pl="8px'
+        <Image
+          src="/anime-dom.png"
+          height={400}
+          width={295}
+          sx={{ marginRight: '30px!important' }}
+        />
+        <Text
+          color="white"
+          maxW="350px"
+          margin="auto"
+          fontSize="3xl"
+          mt={8}
+          boxDecorationBreak="clone"
+          pl="8px'
           pr='8px"
-          >
-            I'm Domitrius Clark. I build{' '}
-            <GradientText direction="to-br" from="#DA22FF" to="#9733EE">
-              {' '}
-              communities
-            </GradientText>{' '}
-            and teach people to{' '}
-            <GradientText direction="to-br" from="#DA22FF" to="#9733EE">
-              code
-            </GradientText>
-          </Text>
-          <Image
-            src="/anime-dom.png"
-            height={400}
-            width={295}
-            sx={{ marginRight: '30px!important' }}
-          />
-        </Container>
+        >
+          My name's Domitrius Clark. I build{' '}
+          <GradientText direction="to-br" from="#DA22FF" to="#9733EE">
+            {' '}
+            communities
+          </GradientText>{' '}
+          and teach people to{' '}
+          <GradientText direction="to-br" from="#DA22FF" to="#9733EE">
+            code
+          </GradientText>
+        </Text>
       </Flex>
       <Flex>
         <VStack justify="space-between" spacing={5} p={2} mt={10}>
