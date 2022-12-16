@@ -1,0 +1,16 @@
+---
+const { postUrl, post } = Astro.props;
+const pathname = new URL("/posts", Astro.url.href);
+const [endpoint] = new URL(postUrl).pathname
+  .split("/")
+  .filter((str) => str.length > 0);
+---
+
+<a class="link" href={`${pathname}/${endpoint}`}>
+  <div
+    class="flex items-center justify-between p-7 border bg-slate-800 border-fuchsia-800 rounded-lg shadow-md shadow-fuchsia-600"
+  >
+    <p class="title">{post.properties.title}</p>
+    <p class="min-w-[10ch]">{post.date.created}</p>
+  </div>
+</a>

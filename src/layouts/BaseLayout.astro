@@ -1,0 +1,19 @@
+---
+import BaseHead from "@components/BaseHead.astro";
+import Nav from "@components/Nav.astro";
+import Footer from "@components/Footer.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <BaseHead />
+  <body
+    class="flex flex-col grow p-3 bg-gradient-to-t from-black to-gray-700 text-slate-300 w-[72vw]"
+  >
+    <Nav />
+    <div class="flex-1">
+      <slot />
+    </div>
+    <Footer />
+  </body>
+</html>
