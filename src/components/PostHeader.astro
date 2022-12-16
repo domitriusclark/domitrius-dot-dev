@@ -1,0 +1,30 @@
+---
+const { pageData } = Astro.props;
+const date = new Date(pageData.date.created);
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+const formatDate = (date: Date) => {
+  return `${
+    months[date.getUTCMonth()]
+  } ${date.getUTCDate()}, ${date.getUTCFullYear()}`;
+};
+---
+
+<div class="flex flex-col items-center mt-9 mr-0 mb-20 ml-0">
+  <h1 class="text-5xl tracking-tight leading-4 break-normal text-start mb-8">
+    {pageData.properties.title}
+  </h1>
+  <p class="uppercase">{formatDate(date)}</p>
+</div>

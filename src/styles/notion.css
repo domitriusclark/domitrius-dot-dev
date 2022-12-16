@@ -1,0 +1,71 @@
+.notion-divider {
+  @apply bg-gray-700 mx-2;
+}
+
+.notion-li {
+  @apply p-1;
+}
+
+.notion-callout-wrapper {
+  @apply flex bg-[antiquewhite] p-4 my-4 rounded-md;
+}
+
+.notion-callout-wrapper .notion-callout-icon {
+  @apply mr-4;
+}
+
+.notion-blockquote {
+  @apply bg-gray-700 p-4 my-4 rounded-md whitespace-pre-line;
+}
+
+.notion-toggle-wrapper {
+  @apply bg-gray-700 p-4 my-4 rounded-md cursor-pointer;
+}
+
+.notion-toggle-wrapper[open] summary {
+  @apply mb-4;
+}
+
+.notion-h1,
+.notion-h2,
+.notion-h3 {
+  @apply font-bold mt-8 mb-4;
+}
+
+.notion-h1 {
+  @apply text-3xl;
+}
+
+.notion-h2 {
+  @apply text-2xl;
+}
+
+.notion-h3 {
+  @apply text-xl;
+}
+
+.notion-p {
+  @apply my-4;
+}
+
+.notion-inline-code {
+  @apply bg-gray-700 text-red-500 p-1 rounded-md text-sm;
+}
+
+.notion-image-wrapper {
+  @apply max-w-fit rounded-lg;
+}
+
+.astro-code,
+.notion-pre {
+  @apply whitespace-pre-wrap break-words p-6 text-sm rounded-md;
+  font-family: var(--font-mono);
+}
+
+.notion-iframe {
+  @apply w-full h-[500px];
+}
+
+.notion-link {
+  @apply underline;
+}
