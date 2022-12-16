@@ -1,7 +1,6 @@
 ---
 const { postUrl, post } = Astro.props;
 const pathname = new URL("/posts", Astro.url.href);
-console.log(Astro.url.origin);
 const [endpoint] = new URL(postUrl).pathname
   .split("/")
   .filter((str) => str.length > 0);
