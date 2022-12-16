@@ -6,27 +6,6 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  publicDir: "./public",
-  outDir: "./dist",
-  vite: {
-    plugins: [
-      {
-        name: "import.meta.url-transformer",
-        transform: (code, id) => {
-          if (id.endsWith(".astro"))
-            return code.replace(/import.meta.url/g, `"${id}"`);
-        },
-      },
-    ],
-    ssr: {
-      external: ["svgo"],
-    },
-  },
-  experimental: {
-    integrations: true,
-  },
+  site: "https://domitrius.dev",,
   integrations: [astroImageTools, tailwind()],
-  server: {
-    port: 3000,
-  },
 });
