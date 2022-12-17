@@ -8,12 +8,9 @@ import Footer from "@components/Footer.astro";
 <html lang="en">
   <BaseHead />
   <body
-    class="flex flex-col grow p-3 bg-gradient-to-t from-black to-gray-700 text-slate-300 w-[72vw]"
+    class="flex flex-col w-[72vw] h-screen grow bg-gradient-to-t from-black to-gray-700 text-slate-300"
   >
-    <Nav />
-    <div class="flex-1">
-      <slot />
-    </div>
+    <slot />
     <Footer />
   </body>
 </html>
