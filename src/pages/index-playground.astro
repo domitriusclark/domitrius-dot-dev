@@ -11,7 +11,7 @@ const sortedPosts = data.sort(
 ---
 
 <BaseLayout title="Welcome to my site!">
-  <main class="overflow-hidden">
+  <main class="overflow-hidden mt-20">
     <div
       class="w-full flex flex-col lg:flex-row items-center lg:items-start justify-evenly"
     >
@@ -23,11 +23,21 @@ const sortedPosts = data.sort(
           <span class="text-indigo-500">Community Builder.</span> Esports nerd.
         </p>
         <div class="flex gap-5">
-          <Icon name="logos:youtube-icon" />
-          <Icon name="logos:twitch" />
-          <Icon name="simple-icons:github" />
-          <Icon name="logos:tiktok-icon" />
-          <Icon name="logos:twitter" />
+          <a href="https://youtube.com/@domitriusclark"
+            ><Icon name="logos:youtube-icon" />
+          </a>
+          <a href="https://twitch.tv/domitriusclark"
+            ><Icon name="logos:twitch" />
+          </a>
+          <a href="https://github.com/domitriusclark"
+            ><Icon name="simple-icons:github" />
+          </a>
+          <a href="https://tiktok.com/_domitriusclark"
+            ><Icon name="logos:tiktok-icon" />
+          </a>
+          <a href="https://twitter.com/domitriusclark"
+            ><Icon name="logos:twitter" />
+          </a>
         </div>
         <div class="flex flex-col gap-5 mt-5">
           {
@@ -38,7 +48,7 @@ const sortedPosts = data.sort(
         </div>
       </div>
 
-      <img src="/domitrius.png" class="w-[25%] hidden lg:flex" />
+      <img src="/domitrius.png" class="w-[35%] hidden lg:flex" />
     </div>
   </main>
 </BaseLayout>

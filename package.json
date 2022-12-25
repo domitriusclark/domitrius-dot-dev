@@ -1,5 +1,5 @@
 {
-  "name": "@example/blog",
+  "name": "domitriusclark",
   "type": "module",
   "version": "0.0.1",
   "private": true,
@@ -21,7 +21,6 @@
     "astro": "^1.6.15",
     "astro-icon": "^0.8.0",
     "astro-imagetools": "^0.6.17",
-    "heroicons": "^2.0.13",
     "tailwindcss": "^3.0.24"
   }
 }
