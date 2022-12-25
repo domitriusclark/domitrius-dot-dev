@@ -2,15 +2,19 @@
 import BaseHead from "@components/BaseHead.astro";
 import Nav from "@components/Nav.astro";
 import Footer from "@components/Footer.astro";
+
+import "@fontsource/bowlby-one-sc";
+import "@fontsource/didact-gothic";
+import "@fontsource/tillana";
+
+const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-  <BaseHead />
-  <body
-    class="flex flex-col w-[72vw] h-screen grow bg-gradient-to-t from-black to-gray-700 text-slate-300"
-  >
+  <BaseHead title={title} />
+  <body class="flex flex-col w-[75vw] h-screen grow bg-zinc-900 text-slate-300">
+    <Nav />
     <slot />
-    <Footer />
   </body>
 </html>

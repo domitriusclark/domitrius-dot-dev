@@ -8,9 +8,8 @@ const [endpoint] = new URL(postUrl).pathname
 
 <a class="link" href={`/posts/${endpoint}`}>
   <div
-    class="flex items-center justify-between p-7 border bg-slate-800 border-fuchsia-800 rounded-lg shadow-md shadow-fuchsia-600"
+    class="flex items-center justify-between p-7 border bg-zinc-800 border-zinc-600 rounded-lg shadow-sm shadow-fuchsia-300"
   >
-    <p class="title">{post.properties.title}</p>
-    <p class="min-w-[10ch]">{post.date.created}</p>
+    <h2 class="font-gothic title">{post.properties.title}</h2>
   </div>
 </a>

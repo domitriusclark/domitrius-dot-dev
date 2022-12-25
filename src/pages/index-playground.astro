@@ -2,6 +2,7 @@
 import { getTableData } from "@jcha0713/astro-notion/api";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import PostPreview from "@components/PostPreview.astro";
+import { Icon } from "astro-icon";
 const data = await getTableData();
 const sortedPosts = data.sort(
   (a, b) =>
@@ -9,17 +10,42 @@ const sortedPosts = data.sort(
 );
 ---
 
-<BaseLayout>
-  <main>
-    <div class="w-full flex flex-col items-center">
-      <h1 class="justify-self-center text-5xl">Yo! I'm Domitrius</h1>
-    </div>
-    <div class="flex flex-col gap-4 pt-10">
-      {
-        sortedPosts.map((post) => (
-          <PostPreview postUrl={post.url} post={post} />
-        ))
-      }
+<BaseLayout title="Welcome to my site!">
+  <main class="overflow-hidden">
+    <div
+      class="w-full flex flex-col lg:flex-row items-center lg:items-start justify-evenly"
+    >
+      <div class="flex flex-col gap-6 mt-20">
+        <h1 class="font-bowlby text-5xl">I'm Domitrius</h1>
+        <p class="font-gothic text-2xl">
+          <span class="text-teal-400">DX Engineer.</span>
+          <span class="text-red-600">Content Creator.</span>
+          <span class="text-indigo-500">Community Builder.</span> Esports nerd.
+        </p>
+        <div class="flex gap-5">
+          <Icon name="logos:youtube-icon" />
+          <Icon name="logos:twitch" />
+          <Icon name="simple-icons:github" />
+          <Icon name="logos:tiktok-icon" />
+          <Icon name="logos:twitter" />
+        </div>
+        <div class="flex flex-col gap-5 mt-5">
+          {
+            sortedPosts.map((post) => (
+              <PostPreview postUrl={post.url} post={post} />
+            ))
+          }
+        </div>
+      </div>
+
+      <img src="/domitrius.png" class="w-[25%] hidden lg:flex" />
     </div>
   </main>
 </BaseLayout>
+
+<style>
+  [astro-icon] {
+    width: 30px;
+    height: 30px;
+  }
+</style>
