@@ -10,13 +10,22 @@ const sortedPosts = data.sort(
 );
 ---
 
-<BaseLayout title="Welcome to my site!">
-  <main class="overflow-hidden mt-20">
+<BaseLayout title="Welcome to  my site!">
+  <main class="w-[80vw] flex h-full justify-center">
     <div
-      class="w-full flex flex-col lg:flex-row items-center lg:items-start justify-evenly"
+      class="w-full lg:w-2/4 xl:w-3/4 flex flex-col xl:flex-row items-center justify-center gap-10 xl:justify-around"
     >
-      <div class="flex flex-col gap-6 mt-20">
-        <h1 class="font-bowlby text-5xl">I'm Domitrius</h1>
+      <span
+        class="h-80 w-80 rounded-full shadow-md shadow-indigo-400 border-purple-400 border-4 overflow-hidden"
+      >
+        <img src="/domitrius.png" />
+      </span>
+      <div
+        class="flex flex-col items-center xl:items-baseline text-center xl:text-start gap-4"
+      >
+        <h1 class="font-bowlby text-5xl underline underline-offset-8">
+          Domitrius Clark
+        </h1>
         <p class="font-gothic text-2xl">
           <span class="text-teal-400">DX Engineer.</span>
           <span class="text-red-600">Content Creator.</span>
@@ -39,16 +48,14 @@ const sortedPosts = data.sort(
             ><Icon name="logos:twitter" />
           </a>
         </div>
-        <div class="flex flex-col gap-5 mt-5">
+        <!-- <div class="flex flex-col gap-5 mt-5">
           {
             sortedPosts.map((post) => (
               <PostPreview postUrl={post.url} post={post} />
             ))
           }
-        </div>
+        </div> -->
       </div>
-
-      <img src="/domitrius.png" class="w-[35%] hidden lg:flex" />
     </div>
   </main>
 </BaseLayout>
